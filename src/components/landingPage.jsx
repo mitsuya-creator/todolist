@@ -1,6 +1,6 @@
 import React from "react";
 
-export function LandingPage() {
+export default function LandingPage() {
     return (
         <div className="bg-primary w-full color-white mx-5 pt-200 h-full">
             <header>

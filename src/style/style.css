@@ -77,3 +77,17 @@ header h1 {
     flex-direction: row;
     justify-content: start;
 }
+
+.add-close-btn {
+    z-index: 2;
+}
+
+.bg-black-20 {
+    background-color: red;
+    z-index: 2 !important;
+}
+
+.MuiBottomNavigation-root {
+    background-color: var(--bg-secondary) !important;
+    z-index: 1 !important;
+}
