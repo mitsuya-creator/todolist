@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { React, useState } from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -7,10 +7,11 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import CloseIcon from '@mui/icons-material/Close';
 import NoEventHere from './noEvent';
 import User from './userProfile';
+import Form from './form';
 
 export default function Home() {
-    const [value, setValue] = React.useState('recents');
-    const [isAdded, setIsAdded] = React.useState(false)
+    const [value, setValue] = useState('recents');
+    const [isAdded, setIsAdded] = useState(false)
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -21,9 +22,8 @@ export default function Home() {
     return (
         <div className="container_todosApp">
             <User />
-            <div>
-                <NoEventHere />
-            </div>
+            {/* <NoEventHere /> */}
+            <Form />
             <BottomNavigation value={value} onChange={handleChange}>
                 <BottomNavigationAction
                     label="Home"
@@ -33,6 +33,7 @@ export default function Home() {
                 />
                 <div className="close_add">
                     <BottomNavigationAction
+                        label=""
                         value="add"
                         onClick={handleIsAdded}
                         icon={isAdded ? <CloseIcon /> : <AddCircleIcon />}
