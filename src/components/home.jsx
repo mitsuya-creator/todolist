@@ -6,6 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import CloseIcon from '@mui/icons-material/Close';
 import NoEventHere from './noEvent';
+import User from './userProfile';
 
 export default function Home() {
     const [value, setValue] = React.useState('recents');
@@ -19,6 +20,7 @@ export default function Home() {
 
     return (
         <div className="container_todosApp">
+            <User />
             <div>
                 <NoEventHere />
             </div>
