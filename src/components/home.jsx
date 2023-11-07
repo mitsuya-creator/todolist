@@ -5,6 +5,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import HomeIcon from '@mui/icons-material/Home';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import CloseIcon from '@mui/icons-material/Close';
+import NoEventHere from './noEvent';
 
 export default function Home() {
     const [value, setValue] = React.useState('recents');
@@ -18,6 +19,9 @@ export default function Home() {
 
     return (
         <div className="container_todosApp">
+            <div>
+                <NoEventHere />
+            </div>
             <BottomNavigation value={value} onChange={handleChange}>
                 <BottomNavigationAction
                     label="Home"

@@ -75,3 +75,35 @@ body {
     width: 100vw;
     height: 100vh;
 }
+
+.container_noevent {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.body_noevent {
+    width: 284px;
+    height: 159px;
+    background-color: var(--bg-primary);
+    display: flex;
+    justify-content: center;
+    padding-top: 16px;
+    border-radius: 10px;
+}
+
+.body_noevent section {
+    display: flex;
+    flex-direction: column;
+}
+
+.body_noevent button {
+    background-color: var(--bg-secondary);
+    padding: 16px;
+    outline: none;
+    border: none;
+    margin-top: 35px;
+    border-radius: 10px;
+}
