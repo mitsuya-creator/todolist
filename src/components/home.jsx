@@ -9,6 +9,7 @@ import NoEventHere from './noEvent';
 import User from './userProfile';
 import Form from './form';
 import EventsHere from './events';
+import TodayTask from './todayTask';
 
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
             {/* <NoEventHere /> */}
             {/* <Form /> */}
             <EventsHere />
+            <TodayTask />
             <BottomNavigation value={value} onChange={handleChange}>
                 <BottomNavigationAction
                     label="Home"

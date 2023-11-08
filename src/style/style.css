@@ -234,17 +234,16 @@ ul li {
 
 .body_list_by_actions {
     position: relative;
-    display: inline-block;
     width: 284px;
     height: 125px;
     margin: 5px;
-    /* overflow: hidden; */
     text-overflow: ellipsis;
     white-space: normal;
     padding: 16px;
     background-color: var(--bg-primary);
     scroll-snap-align: center;
     border-radius: 10px;
+    display: inline-block;
 }
 
 .body_list_by_actions p {
@@ -287,4 +286,29 @@ ul li {
 
 button:hover {
     cursor: pointer;
+}
+
+.container_today_task_view_all {
+    width: 327px;
+    height: 100vh;
+    background: rgb(37, 0, 255);
+    background: linear-gradient(90deg, rgba(37, 0, 255, 1) 0%, rgba(89, 74, 178, 1) 100%);
+    margin: 106px auto;
+    border-radius: 10px;
+}
+
+.title_task {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.title_task button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.body_today_task {
+    overflow-y: scroll;
 }
