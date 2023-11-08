@@ -27,7 +27,7 @@ export default function Home() {
             <User />
             {/* <NoEventHere /> */}
             {/* <Form /> */}
-            <EventsHere />
+            {/* <EventsHere /> */}
             <TodayTask />
             <BottomNavigation value={value} onChange={handleChange}>
                 <BottomNavigationAction

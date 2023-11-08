@@ -118,6 +118,7 @@ body {
     position: fixed;
     top: 0px;
     background-color: #000;
+    z-index: 10;
 }
 
 .container_user section {
@@ -288,12 +289,21 @@ button:hover {
     cursor: pointer;
 }
 
-.container_today_task_view_all {
+.container_today_task_view_less {
     width: 327px;
     height: 100vh;
     background: rgb(37, 0, 255);
     background: linear-gradient(90deg, rgba(37, 0, 255, 1) 0%, rgba(89, 74, 178, 1) 100%);
     margin: 106px auto;
+    border-radius: 10px;
+}
+
+.container_today_task_view_all {
+    width: 327px;
+    height: 100vh;
+    background: rgb(37, 0, 255);
+    background: linear-gradient(90deg, rgba(37, 0, 255, 1) 0%, rgba(89, 74, 178, 1) 100%);
+    margin: 70px auto;
     border-radius: 10px;
 }
 
@@ -311,4 +321,9 @@ button:hover {
 
 .body_today_task {
     overflow-y: scroll;
+}
+
+.container_today_task {
+    display: flex;
+    justify-content: center;
 }
