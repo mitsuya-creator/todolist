@@ -8,6 +8,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import NoEventHere from './noEvent';
 import User from './userProfile';
 import Form from './form';
+import EventsHere from './events';
+
 
 export default function Home() {
     const [value, setValue] = useState('recents');
@@ -23,7 +25,8 @@ export default function Home() {
         <div className="container_todosApp">
             <User />
             {/* <NoEventHere /> */}
-            <Form />
+            {/* <Form /> */}
+            <EventsHere />
             <BottomNavigation value={value} onChange={handleChange}>
                 <BottomNavigationAction
                     label="Home"
