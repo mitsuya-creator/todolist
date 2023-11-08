@@ -1,5 +1,6 @@
 import React from "react";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MoreButtonActions from "./moreButtonActions";
 
 export default function ListTodosByActions() {
     const testLoop = [0, 1, 2, 3]
@@ -13,6 +14,9 @@ export default function ListTodosByActions() {
                     </div>
                     <div className="more_vertical_icon">
                         <MoreVertIcon onClick={() => console.log(index)} />
+                    </div>
+                    <div>
+                        <MoreButtonActions />
                     </div>
                 </section>
             </li>
