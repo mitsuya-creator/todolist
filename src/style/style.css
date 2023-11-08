@@ -251,3 +251,11 @@ ul li {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+.body_list_by_actions section {
+    display: flex;
+}
+
+.more_vertical_icon:hover {
+    cursor: pointer;
+}
