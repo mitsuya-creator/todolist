@@ -3,8 +3,7 @@ import Card from "./card";
 import PropTypes from "prop-types";
 
 function TodayTask(props) {
-    const { isExpanding, setIsExpanding } = props;
-    const testLoop = [1, 2, 3, 4, 5,]
+    const { isExpanding, setIsExpanding, todos } = props;
     return (
         <div className="container_today_task">
             <div className={isExpanding ? "container_today_task_view_expand" : "container_today_task_view_lessen"}>
@@ -14,7 +13,7 @@ function TodayTask(props) {
                 </section>
                 <section className={isExpanding ? "body_today_task_view_expand" : "body_today_task_view_lessen"}>
                     <ul>
-                        {testLoop.map(index => <Card key={index} title={index} />)}
+                        {todos.map(todo => <Card key={todo.id} title={todo.title} description={todo.description} />)}
                     </ul>
                 </section>
             </div>
@@ -23,6 +22,7 @@ function TodayTask(props) {
 }
 TodayTask.propTypes = {
     isExpanding: PropTypes.any,
-    setIsExpanding: PropTypes.any
+    setIsExpanding: PropTypes.any,
+    todos: PropTypes.any
 }
 export default TodayTask;

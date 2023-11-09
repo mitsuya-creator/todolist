@@ -10,9 +10,11 @@ import User from './userProfile';
 import Form from './form';
 import EventsHere from './events';
 import TodayTask from './todayTask';
+import { data } from '../utils/initialData';
 
 
 export default function Home() {
+    const [todos, setTodos] = useState(data);
     const [value, setValue] = useState('recents');
     const [isAdded, setIsAdded] = useState(false);
     const [isExpanding, setIsExpanding] = useState(false);
@@ -30,8 +32,8 @@ export default function Home() {
             <User />
             {/* <NoEventHere /> */}
             {isAdded ? <Form /> : null}
-            {isExpanding ? null : <EventsHere isExpanding={isExpanding} />}
-            <TodayTask isExpanding={isExpanding} setIsExpanding={handleIsExpanding} />
+            {isExpanding ? null : <EventsHere todos={todos} />}
+            <TodayTask isExpanding={isExpanding} setIsExpanding={handleIsExpanding} todos={todos} />
             <BottomNavigation value={value} onChange={handleChange}>
                 <BottomNavigationAction
                     label="Home"

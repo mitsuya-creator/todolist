@@ -1,11 +1,10 @@
 import React from "react";
 import Card from "./card";
 
-export default function ListTodosByActions() {
-    const testLoop = [0, 1, 2, 3]
+export default function ListTodosByActions({ filterTodos }) {
     return (
         <ul className="container_list_by_actions">
-            {testLoop.map((index) => <Card key={index} />)}
+            {filterTodos.map(todo => <Card key={todo.id} title={todo.title} description={todo.description} />)}
         </ul>
     )
 }
