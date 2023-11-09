@@ -15,7 +15,7 @@ import TodayTask from './todayTask';
 export default function Home() {
     const [value, setValue] = useState('recents');
     const [isAdded, setIsAdded] = useState(false);
-    const [isExpanding, setExpanding] = useState(false);
+    const [isExpanding, setIsExpanding] = useState(false);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -23,15 +23,15 @@ export default function Home() {
         setIsAdded(!isAdded)
     }
     const handleIsExpanding = () => {
-        setExpanding(!isExpanding)
+        setIsExpanding(!isExpanding)
     }
     return (
         <div className="container_todosApp">
             <User />
             {/* <NoEventHere /> */}
-            {/* <Form /> */}
-            {isExpanding ? null : <EventsHere />}
-            <TodayTask isExpanding={isExpanding} setExpanding={handleIsExpanding} />
+            {isAdded ? <Form /> : null}
+            {isExpanding ? null : <EventsHere isExpanding={isExpanding} />}
+            <TodayTask isExpanding={isExpanding} setIsExpanding={handleIsExpanding} />
             <BottomNavigation value={value} onChange={handleChange}>
                 <BottomNavigationAction
                     label="Home"

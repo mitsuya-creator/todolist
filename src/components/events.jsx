@@ -1,9 +1,11 @@
 import React from "react";
 import ListTodosByActions from "./listTodosByActions";
+import PropTypes from "prop-types";
 
-export default function EventsHere() {
+function EventsHere(props) {
+    const { isExpanding } = props;
     return (
-        <div className="container_todos_by_actions">
+        <div className={isExpanding ? "d-none" : "ontainer_todos_by_actions"}>
             <section className="button_actions">
                 <div>
                     <button className="button_actions_active">Completed</button>
@@ -14,3 +16,8 @@ export default function EventsHere() {
         </div>
     )
 }
+EventsHere.propType = {
+    isExpanding: PropTypes.any
+}
+
+export default EventsHere;
