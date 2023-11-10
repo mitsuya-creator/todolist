@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
 
 export default function LandingPage() {
     return (
@@ -12,7 +13,9 @@ export default function LandingPage() {
                     <p>
                         Become focused, organized, and calm with TodosApp.
                     </p>
-                    <button type="button">Get started</button>
+                    <Link to="/dashboard">
+                        <button type="button">Get started</button>
+                    </Link>
                 </section>
             </header>
             <footer>

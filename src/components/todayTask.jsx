@@ -1,9 +1,8 @@
 import React from "react";
 import Card from "./card";
-import PropTypes from "prop-types";
 
-function TodayTask(props) {
-    const { isExpanding, setIsExpanding, todos } = props;
+function TodayTask({ isExpanding, setIsExpanding, todos }) {
+
     return (
         <div className="container_today_task">
             <div className={isExpanding ? "container_today_task_view_expand" : "container_today_task_view_lessen"}>
@@ -19,10 +18,5 @@ function TodayTask(props) {
             </div>
         </div>
     )
-}
-TodayTask.propTypes = {
-    isExpanding: PropTypes.any,
-    setIsExpanding: PropTypes.any,
-    todos: PropTypes.any
 }
 export default TodayTask;

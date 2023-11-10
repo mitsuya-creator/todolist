@@ -57,24 +57,49 @@ body {
     bottom: 0;
 }
 
-.close_add {
-    width: 50px;
-    height: 50px;
-    background-color: var(--bg-secondary);
-    margin-top: -10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 5px;
-    overflow: hidden;
-}
-
 .container_todosApp {
     background-color: #000;
     width: 100vw;
     height: 100vh;
     position: relative;
+}
+
+.container_bottom_navigation {
+    width: 100vw;
+    height: 90px;
+    display: fixed;
+    bottom: 0;
+    background-color: var(--bg-secondary);
+    position: absolute;
+
+}
+
+.container_bottom_navigation div {
+    display: flex;
+    justify-content: space-evenly;
+    height: 90px;
+    align-items: center;
+}
+
+.container_bottom_navigation button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.active {
+    opacity: 1;
+}
+
+.not_active {
+    opacity: 0.5;
+}
+
+.text_decoration_none {
+    text-decoration: none;
 }
 
 .container_noevent {
