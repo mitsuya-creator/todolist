@@ -1,30 +1,32 @@
-import React from "react";
+import { React, useState } from "react";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MoreButtonActions from "./moreButtonActions";
-import PropType from "prop-types";
 
-function Card(props) {
-    const { title, description } = props;
+function Card({ title, descriptions, id }) {
+    const [action, setAction] = useState(false);
+    const handleMoreIcon = idCard => {
+        //Check if morebutonaction active on other card
+        if (document.body.classList.add("more_button_actived"))
+            if (idCard == id) {
+                setAction(true)
+            }
+        console.log(idCard)
+    }
     return (
         <li className="body_list_by_actions">
             <section>
                 <div>
                     <h1>{title}</h1>
-                    <p>{description}</p>
+                    <p>{descriptions}</p>
                 </div>
                 <div className="more_vertical_icon">
-                    <MoreVertIcon onClick={() => console.log(index)} />
+                    <MoreVertIcon onClick={() => handleMoreIcon(id)} />
                 </div>
+                {action ? <MoreButtonActions /> : null}
                 <div>
-                    <MoreButtonActions />
                 </div>
             </section>
         </li>
     )
-}
-
-Card.propTypes = {
-    title: PropType.any,
-    description: PropType.any
 }
 export default Card;
