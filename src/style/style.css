@@ -17,6 +17,10 @@ body {
     overflow: hidden;
 }
 
+.d-none {
+    display: none !important;
+}
+
 .container_lp {
     margin: 0 5px;
 }
@@ -124,6 +128,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.more_vertical_icon:hover {
+    cursor: pointer;
 }
 
 .body_noevent button {
