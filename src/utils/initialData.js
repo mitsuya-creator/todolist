@@ -4,7 +4,7 @@ export const data = [
         title: "ESLint ES6",
         date: "21-10-2023",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lor",
-        isCompleted: false
+        isCompleted: true
     }, {
         id: 1,
         title: "ReactJs",
@@ -18,7 +18,8 @@ export const data = [
             "and more recently with desktop publishing software like Aldus PageMaker includ" +
             "ing versions of Lorem Ipsum.",
         isCompleted: false
-    }, {
+    },
+    {
         id: 2,
         title: "Module Bundler",
         date: "21-10-2023",

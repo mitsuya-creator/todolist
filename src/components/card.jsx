@@ -1,6 +1,6 @@
 import { React } from "react";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import MoreButtonActions from "./moreButtonActions";
+import MoreButtonActions from "@/components/moreButtonActions";
 import { toggleMoreButtonActiveList } from "@/utils/toggleMoreButtonActiveList";
 
 function Card({ title, descriptions, id }) {

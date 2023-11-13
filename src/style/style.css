@@ -17,6 +17,14 @@ body {
     overflow: hidden;
 }
 
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
 .d-none {
     display: none !important;
 }
@@ -75,7 +83,7 @@ body {
     bottom: 0;
     background-color: var(--bg-secondary);
     position: absolute;
-
+    z-index: 1;
 }
 
 .container_bottom_navigation div {
@@ -217,6 +225,7 @@ body {
     border: 1px solid var(--color-primary) !important;
 }
 
+/* 
 .container_todos_by_actions {
     width: 100vw;
     height: 100vh;
@@ -250,7 +259,7 @@ body {
 
 .button_actions_active {
     background-color: var(--bg-secondary) !important;
-}
+} */
 
 ul li {
     display: inline;
@@ -317,14 +326,15 @@ button:hover {
 
 .container_today_task_view_lessen {
     width: 327px;
-    height: 80vh;
+    height: 50vh;
     background: rgb(37, 0, 255);
     background: linear-gradient(90deg, rgba(37, 0, 255, 1) 0%, rgba(89, 74, 178, 1) 100%);
-    margin: 26px auto;
+    margin: 275px auto 0;
     border-radius: 10px;
     position: relative;
 }
 
+/* 
 .container_today_task_view_expand {
     width: 327px;
     height: 80vh;
@@ -332,7 +342,7 @@ button:hover {
     background: linear-gradient(90deg, rgba(37, 0, 255, 1) 0%, rgba(89, 74, 178, 1) 100%);
     margin: 70px auto;
     border-radius: 10px;
-}
+} */
 
 .title_task {
     display: flex;
@@ -346,16 +356,16 @@ button:hover {
     background-color: transparent;
 }
 
-.body_today_task_view_expand {
+/* .body_today_task_view_expand {
     overflow-y: scroll;
     height: 89%;
     padding-bottom: 10px;
-}
+} */
 
 .body_today_task_view_lessen {
     overflow-y: scroll;
-    height: 40%;
-    padding-bottom: 10px;
+    height: 43vh;
+    background-color: transparent;
 }
 
 .container_today_task {
