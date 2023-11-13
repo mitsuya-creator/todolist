@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "@/components/card";
 
-function TodayTask({ isExpanding, setIsExpanding, todos }) {
+function TodayTask({ todos }) {
 
     return (
         <div className="container_today_task">

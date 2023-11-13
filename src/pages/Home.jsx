@@ -16,7 +16,7 @@ export default function Home() {
                     <div className="fixed_top">
                         <User />
                         <ul className={completedTask.length == 1 ? "container_list_by_actions flex justify-center" : "container_list_by_actions"}>
-                            {completedTask.map(data => <Card title={data.title} descriptions={data.description} key={data.id} id={data.id} />)}
+                            {completedTask.map(data => <Card title={data.title} descriptions={data.description} key={data.id} id={data.id} isCompleted={data.isCompleted} />)}
                         </ul>
                         {/* <NoEventHere /> */}
                     </div>

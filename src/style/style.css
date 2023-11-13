@@ -366,6 +366,12 @@ button:hover {
     overflow-y: scroll;
     height: 43vh;
     background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.success_svg {
+    fill: #64dd17 !important;
 }
 
 .container_today_task {
