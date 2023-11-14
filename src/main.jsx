@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "@/pages/Home";
 import BottomNavigation from "./components/button/ButtonNavigation";
 import LandingPage from "@/pages/Index";
-import EventsHere from "@/components/events";
+import EventsHere from "@/components/Events";
 import Calendar from "@/pages/Calendar";
 import Form from "@/pages/Form";
 import "./style/style.css";

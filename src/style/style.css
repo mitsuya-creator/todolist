@@ -17,8 +17,16 @@ body {
     overflow: hidden;
 }
 
+.section_single_slide_mark {
+    position: relative;
+}
+
 .flex {
     display: flex;
+}
+
+.flex-direction-column {
+    flex-direction: column;
 }
 
 .justify-center {
@@ -83,7 +91,7 @@ body {
     bottom: 0;
     background-color: var(--bg-secondary);
     position: absolute;
-    z-index: 1;
+    z-index: 9;
 }
 
 .container_bottom_navigation div {
@@ -225,16 +233,18 @@ body {
     border: 1px solid var(--color-primary) !important;
 }
 
-/* 
 .container_todos_by_actions {
     width: 100vw;
-    height: 100vh;
-    display: block;
-    transition: 2s ease display;
+    height: 100%;
+    position: absolute;
+    margin: 63px auto;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
 }
 
 .button_actions {
-    padding-top: 67px;
+    margin-top: 20px;
     display: flex;
     width: 100vw;
     height: 51px;
@@ -242,9 +252,16 @@ body {
     background-color: #000;
 }
 
+
 .button_actions div {
-    width: 296px;
+    width: max-content;
+    height: max-content;
     background-color: var(--bg-primary);
+    border-radius: 10px;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button_actions button {
@@ -259,10 +276,16 @@ body {
 
 .button_actions_active {
     background-color: var(--bg-secondary) !important;
-} */
+}
 
-ul li {
-    display: inline;
+.card_events {
+    width: 100vw;
+    height: 72vh;
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+    margin-top: 10px;
+    overflow-y: scroll;
 }
 
 .container_list_by_actions {

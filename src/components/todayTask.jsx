@@ -1,5 +1,6 @@
 import React from "react";
-import Card from "@/components/card";
+import Card from "@/components/Card";
+import { Link } from "react-router-dom";
 
 function TodayTask({ todos }) {
 
@@ -8,7 +9,9 @@ function TodayTask({ todos }) {
             <div className="container_today_task_view_lessen">
                 <section className="title_task">
                     <h1>Today's Task</h1>
-                    <button type="buttons">View all</button>
+                    <Link to={"/dashboard/events"}>
+                        <button type="buttons">View all</button>
+                    </Link>
                 </section>
                 <section className="body_today_task_view_lessen">
                     <ul>
