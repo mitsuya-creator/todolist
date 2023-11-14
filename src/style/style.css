@@ -1,7 +1,9 @@
 :root {
     --bg-primary: #26252C;
     --bg-secondary: #594AB2;
+    --bg-body: #2d2d30;
     --color-primary: #ffffff;
+
 }
 
 * {
@@ -13,7 +15,7 @@
 }
 
 body {
-    background-color: #000;
+    background-color: var(--bg-body);
     overflow: hidden;
 }
 
@@ -82,7 +84,7 @@ body {
 }
 
 .container_todosApp {
-    background-color: #000;
+    background-color: var(--bg-body);
     width: 100vw;
     height: 100vh;
     position: relative;
@@ -252,7 +254,7 @@ body {
     width: 100vw;
     height: 51px;
     justify-content: center;
-    background-color: #000;
+    background-color: var(--bg-body);
 }
 
 
@@ -286,13 +288,13 @@ body {
     height: 72vh;
     display: flex;
     justify-content: center;
-    background-color: #000;
+    background-color: var(--bg-body);
     margin-top: 10px;
     overflow-y: scroll;
 }
 
 .container_list_by_actions {
-    background-color: #000;
+    background-color: var(--bg-body);
     width: 360px;
     height: 180px;
     overflow-x: auto;
