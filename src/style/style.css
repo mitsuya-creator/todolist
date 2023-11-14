@@ -384,11 +384,6 @@ button:hover {
     background-color: transparent;
 }
 
-/* .body_today_task_view_expand {
-    overflow-y: scroll;
-    height: 89%;
-    padding-bottom: 10px;
-} */
 
 .body_today_task_view_lessen {
     overflow-y: scroll;
@@ -420,6 +415,38 @@ button:hover {
     align-items: center;
     width: 100vw;
     background-color: var(--bg-secondary);
+}
+
+.container_button_back_detail {
+    display: flex;
+    justify-content: space-between;
+    height: 63px;
+    width: 100vw;
+    background-color: var(--bg-secondary);
+}
+
+.button_back_title {
+    display: flex;
+    flex-direction: row;
+    height: 63px;
+    align-items: center;
+}
+
+.container_icon_title {
+    display: flex;
+    flex-direction: row;
+    height: 63px;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_icon_title div {
+    height: 63px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+    margin-right: 16px;
 }
 
 .button_back {
