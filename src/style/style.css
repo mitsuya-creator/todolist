@@ -17,6 +17,10 @@ body {
     overflow: hidden;
 }
 
+.relative {
+    position: relative;
+}
+
 .section_single_slide_mark {
     position: relative;
 }
@@ -235,12 +239,11 @@ body {
 
 .container_todos_by_actions {
     width: 100vw;
-    height: 100%;
-    position: absolute;
-    margin: 63px auto;
+    margin: 63px auto 0;
     display: flex;
     justify-content: center;
     z-index: 1;
+    position: absolute;
 }
 
 .button_actions {
@@ -436,4 +439,27 @@ button:hover {
     display: flex;
     align-items: center;
     width: 100vw;
+}
+
+.container_button_add_todo {
+    position: absolute;
+    width: 116px;
+    right: 5px;
+    bottom: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-secondary);
+    padding: 16px;
+    border-radius: 10px;
+    z-index: 11;
+
+}
+
+.container_button_add_todo button {
+    background-color: var(--bg-secondary);
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    line-height: 16px;
 }

@@ -5,6 +5,7 @@ import Slide from '@mui/material/Slide';
 import Card from "@/components/Card";
 import TodayTask from "@/components/todayTask";
 import { data } from "@/utils/initialData";
+import ButtonAddTodo from "@/components/button/ButtonAddTodo";
 
 export default function Home() {
     const completedTask = data.filter(data => data.isCompleted === true)
@@ -20,6 +21,7 @@ export default function Home() {
                     {/* <NoEventHere /> */}
                 </div>
                 <TodayTask todos={data} />
+                <ButtonAddTodo />
             </section>
         </Slide>
     )
