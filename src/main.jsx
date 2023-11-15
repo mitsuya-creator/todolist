@@ -8,7 +8,7 @@ import EventsHere from "@/pages/Events";
 import Calendar from "@/pages/Calendar";
 import Form from "@/pages/Form";
 import "./style/style.css";
-import DetailEvents from "@/pages/DetailsEvents";
+import DetailEvents from "@/pages/DetailEvents";
 
 function App() {
     return (
