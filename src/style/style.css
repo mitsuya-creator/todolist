@@ -16,7 +16,12 @@
 
 body {
     background-color: var(--bg-body);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.sm_800 {
+    font-weight: 800 !important;
 }
 
 .relative {
@@ -362,16 +367,6 @@ button:hover {
     position: relative;
 }
 
-/* 
-.container_today_task_view_expand {
-    width: 327px;
-    height: 80vh;
-    background: rgb(37, 0, 255);
-    background: linear-gradient(90deg, rgba(37, 0, 255, 1) 0%, rgba(89, 74, 178, 1) 100%);
-    margin: 70px auto;
-    border-radius: 10px;
-} */
-
 .title_task {
     display: flex;
     justify-content: space-between;
@@ -423,6 +418,9 @@ button:hover {
     height: 63px;
     width: 100vw;
     background-color: var(--bg-secondary);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
 .button_back_title {
@@ -470,25 +468,71 @@ button:hover {
     width: 100vw;
 }
 
-.container_button_add_todo {
+.container_button_add_todo_home {
     position: absolute;
     width: 116px;
     right: 5px;
     bottom: 1px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     background-color: var(--bg-secondary);
     padding: 16px;
     border-radius: 10px;
     z-index: 11;
 
+
 }
 
-.container_button_add_todo button {
+.container_button_add_todo_home button {
     background-color: var(--bg-secondary);
     outline: none;
     border: none;
     border-radius: 10px;
     line-height: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_button_add_todo_detail_event {
+    position: fixed;
+    bottom: 0;
+    height: 63px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+    background-color: var(--bg-secondary);
+}
+
+.container_button_add_todo_detail_event button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 100vw;
+    height: 63px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_button_add_todo_detail_event button span,
+.container_button_add_todo_home button span {
+    margin-left: 5px;
+}
+
+.container_detail_event {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.container_card_detail {
+    height: fit-content;
+    margin-top: 20px;
+    margin-bottom: 83px;
 }

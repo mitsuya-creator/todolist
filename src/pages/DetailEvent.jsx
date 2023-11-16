@@ -5,17 +5,18 @@ import Slide from '@mui/material/Slide';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { getDetailEvent } from "@/utils/getDetailEvents";
+import CardDetail from "@/components/CardDetail";
+import ButtonAddTodo from '@/components/button/ButtonAddTodo';
 
-export default function DetailEvents() {
+export default function DetailEvent() {
     const [event, setEvent] = useState({});
     const { id } = useParams();
     useEffect(() => {
-        setEvent(getDetailEvent(id))
+        setEvent(getDetailEvent(id));
     }, [id]);
-    console.log(event)
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
-            <div className="container_detail_events">
+            <div className="container_detail_event">
                 <div className="container_button_back_detail">
                     <section className="button_back_title">
                         <ButtonBackNavigation />
@@ -32,7 +33,8 @@ export default function DetailEvents() {
                         </div>
                     </section>
                 </div>
-
+                <CardDetail event={event} />
+                <ButtonAddTodo style={"container_button_add_todo_detail_event"} />
             </div>
         </Slide>
     )

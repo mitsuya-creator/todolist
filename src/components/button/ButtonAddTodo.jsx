@@ -2,12 +2,11 @@ import React from "react";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Link } from "react-router-dom";
 
-export default function ButtonAddTodo() {
+export default function ButtonAddTodo({ style }) {
     return (
         <Link to={"/newtask"}>
-            <div className="container_button_add_todo">
-                <AddCircleIcon />
-                <button>New events</button>
+            <div className={style}>
+                <button><AddCircleIcon /> <span>New event</span></button>
             </div>
         </Link>
     )

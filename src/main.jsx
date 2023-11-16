@@ -8,7 +8,7 @@ import EventsHere from "@/pages/Events";
 import Calendar from "@/pages/Calendar";
 import Form from "@/pages/Form";
 import "./style/style.css";
-import DetailEvents from "@/pages/DetailEvents";
+import DetailEvent from "@/pages/DetailEvent";
 
 function App() {
     return (
@@ -21,7 +21,7 @@ function App() {
                     </Route>
                     <Route path="/dashboard/calendar" element={<Calendar />} />
                 </Route>
-                <Route path="/events/detail/:id" element={<DetailEvents />} />
+                <Route path="/events/detail/:id" element={<DetailEvent />} />
                 <Route path="/newtask" element={<Form />} />
             </Routes>
         </BrowserRouter>

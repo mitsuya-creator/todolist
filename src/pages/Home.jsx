@@ -21,7 +21,7 @@ export default function Home() {
                     {/* <NoEventHere /> */}
                 </div>
                 <TodayTask todos={data} />
-                <ButtonAddTodo />
+                <ButtonAddTodo style="container_button_add_todo_home" />
             </section>
         </Slide>
     )
