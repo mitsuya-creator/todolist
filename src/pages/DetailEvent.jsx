@@ -20,7 +20,7 @@ export default function DetailEvent() {
                 <div className="container_button_back_detail">
                     <section className="button_back_title">
                         <ButtonBackNavigation />
-                        <h1>Detail events</h1>
+                        <h1>Detail event</h1>
                     </section>
                     <section className="container_icon_title">
                         <div>
