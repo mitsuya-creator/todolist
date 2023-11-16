@@ -555,3 +555,8 @@ button:hover {
     margin-top: 20px;
     margin-bottom: 83px;
 }
+
+.MuiDateCalendar-root {
+    background-color: var(--bg-body) !important;
+    color: var(--color-primary) !important;
+}
