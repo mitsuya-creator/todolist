@@ -6,6 +6,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { createTheme } from '@mui/material/styles'
 import { ThemeProvider } from '@emotion/react';
+import { showFormattedDate } from '@/utils/showFormattedDate';
+import Slide from '@mui/material/Slide';
+import User from "@/components/userProfile";
 
 const newTheme = (theme) => createTheme({
     ...theme,
@@ -37,18 +40,28 @@ const newTheme = (theme) => createTheme({
     }
 })
 export default function Calendar() {
-    const [value, setValue] = React.useState(dayjs('2023-04-17'));
-    console.log(value)
+    const [value, setValue] = React.useState(dayjs(new Date()));
+    const date = showFormattedDate(value);
+    console.log(date)
 
     return (
-        <ThemeProvider theme={newTheme}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={['DateCalendar', 'DateCalendar']}>
-                    <DemoItem label="Controlled calendar">
-                        <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} />
-                    </DemoItem>
-                </DemoContainer>
-            </LocalizationProvider>
-        </ThemeProvider>
+        <Slide direction="left" in={true} mountOnEnter unmountOnExit>
+            <section className="section_single_slide_mark">
+                <div className="fixed_top">
+                    <User />
+                </div>
+                <div className="container_calendar">
+                    <ThemeProvider theme={newTheme}>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DemoContainer components={['DateCalendar', 'DateCalendar']}>
+                                <DemoItem>
+                                    <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} />
+                                </DemoItem>
+                            </DemoContainer>
+                        </LocalizationProvider>
+                    </ThemeProvider>
+                </div>
+            </section>
+        </Slide>
     );
 }
