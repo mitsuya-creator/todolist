@@ -2,7 +2,7 @@ export const data = [
     {
         id: +new Date(),
         title: "Get Up",
-        date: new Date().toLocaleDateString("id-ID", {
+        date: new Date().toLocaleDateString("en-EN", {
             weekday: "long",
             year: "numeric",
             month: "long",
