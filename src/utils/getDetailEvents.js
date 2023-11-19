@@ -1,5 +1,6 @@
-import { data } from "@/utils/initialData";
+import { getItemFromLocalStorage } from "@/utils/getItemLocalStorage";
 
+let initialData = getItemFromLocalStorage();
 export function getDetailEvent(id) {
-    return data.filter(data => data.id == id);
+    return initialData.filter(data => data.id == id);
 }
