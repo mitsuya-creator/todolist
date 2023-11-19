@@ -51,8 +51,8 @@ const newTheme = (theme) => createTheme({
 })
 
 const isSpecialDay = (date) => {
-    console.log(date)
-    return date.date() === 1; // Check if it's the 15th day of the month
+    const initialDate = [11, 12, 13, 14, 15]
+    return initialDate.includes(date.date());
 };
 
 function EventsDate({ day, ...props }) {
@@ -71,6 +71,7 @@ function EventsDate({ day, ...props }) {
                 alignItems: 'center',
                 justifyContent: 'center',
             }}
+            onClick={e => console.log(e)}
         >
             {dayjs(day).format('D')}
         </PickersDay>
