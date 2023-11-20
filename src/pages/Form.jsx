@@ -6,18 +6,18 @@ import { eventsReducer } from "@/utils/reducer";
 
 let inititalEvents = getItemFromLocalStorage();
 export default function Form() {
-    const [events, dispatch] = useReducer(inititalEvents, eventsReducer);
+    const [events, dispatch] = useReducer(eventsReducer, inititalEvents);
     const [content, setContent] = useState({
         title: "", date: "", description: ""
     })
+    console.log(events)
     const textAreaRows = useRef();
-    console.log(textAreaRows)
     console.log(content)
     const handleAddEvent = () => {
         dispatch({
             type: "added",
             title: content.title,
-            date: content.date,
+            date: content.date == "" ? new Date() : content.date,
             description: content.description
         })
     }
@@ -49,7 +49,7 @@ export default function Form() {
                             }} />
                         </div>
                         <div className="container_submit_form">
-                            <button className="submit_form" onClick={() => handleAddEvent()}>Add event</button>
+                            <button className="submit_form" onClick={handleAddEvent}>Add event</button>
                         </div>
                     </div>
                 </div>
