@@ -9,5 +9,10 @@ function getItemFromLocalStorage() {
     initialData = localStorage.getItem("events");
     return JSON.parse(initialData);
 }
+function addItemToLocalStorage(updateData) {
+    console.log("addItem")
+    localStorage.setItem("events", JSON.stringify(updateData))
+    return 0;
+}
 
-export { getItemFromLocalStorage };
+export { getItemFromLocalStorage, addItemToLocalStorage };
