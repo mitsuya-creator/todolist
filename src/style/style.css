@@ -157,8 +157,23 @@ body {
     align-items: center;
 }
 
+/* 
 .more_vertical_icon:hover {
     cursor: pointer;
+} */
+.checkbox_card {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+}
+
+.checked {
+    accent-color: #64dd17 !important;
+}
+
+.line_through {
+    text-decoration: line-through;
 }
 
 .body_noevent button {
@@ -350,7 +365,7 @@ body {
     display: flex;
 }
 
-.container_more_button_actions {
+/* .container_more_button_actions {
     position: absolute;
     top: 10px;
     right: 20px;
@@ -359,7 +374,7 @@ body {
     height: fit-content;
     border-radius: 10px;
     background-color: var(--bg-secondary);
-}
+} */
 
 .container_more_button_actions button {
     background-color: var(--bg-secondary);
