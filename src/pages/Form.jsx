@@ -1,8 +1,26 @@
-import * as React from "react";
+import { React, useReducer, useState, useRef } from "react";
 import Slide from '@mui/material/Slide';
 import ButtonBackNavigation from "@/components/button/ButtonNavigationBack";
+import { getItemFromLocalStorage } from "@/utils/getItemLocalStorage";
+import { eventsReducer } from "@/utils/reducer";
 
+let inititalEvents = getItemFromLocalStorage();
 export default function Form() {
+    const [events, dispatch] = useReducer(inititalEvents, eventsReducer);
+    const [content, setContent] = useState({
+        title: "", date: "", description: ""
+    })
+    const textAreaRows = useRef();
+    console.log(textAreaRows)
+    console.log(content)
+    const handleAddEvent = () => {
+        dispatch({
+            type: "added",
+            title: content.title,
+            date: content.date,
+            description: content.description
+        })
+    }
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
             <div className="container_new_task">
@@ -17,18 +35,21 @@ export default function Form() {
                         </div>
                         <div>
                             <label htmlFor="enter_event">Enter event</label>
-                            <input type="text" id="enter_event" />
+                            <input type="text" id="enter_event" onChange={e => setContent({ ...content, title: e.target.value })} />
                         </div>
                         <div>
                             <label htmlFor="date_event">Date</label>
-                            <input type="date" id="date_event" />
+                            <input type="date" id="date_event" onChange={e => setContent({ ...content, date: e.target.value })} />
                         </div>
                         <div>
                             <label htmlFor="description_event">Description</label>
-                            <div contentEditable="true" className="div_as_input" />
+                            <textarea ref={textAreaRows} type="text" rows={1} cols={20} style={{ resize: "none" }} className="input_as_input" onChange={e => setContent({ ...content, description: e.target.value })} onInput={() => {
+                                textAreaRows.current.style.height = "";
+                                textAreaRows.current.style.height = textAreaRows.current.scrollHeight + "px";
+                            }} />
                         </div>
                         <div className="container_submit_form">
-                            <button className="submit_form">Add event</button>
+                            <button className="submit_form" onClick={() => handleAddEvent()}>Add event</button>
                         </div>
                     </div>
                 </div>

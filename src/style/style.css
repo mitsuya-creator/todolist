@@ -218,7 +218,7 @@ body {
 }
 
 .body_form input,
-.div_as_input {
+.input_as_input {
     width: 80vw;
     height: 32px;
     background-color: var(--bg-body);
@@ -229,9 +229,8 @@ body {
 }
 
 
-.body_form .div_as_input {
-    height: 100%;
-    line-height: 16px;
+.body_form .input_as_input {
+    margin-top: 8px;
 }
 
 .title_form {
