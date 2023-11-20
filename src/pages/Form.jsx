@@ -1,15 +1,18 @@
-import { React, useReducer, useState, useRef } from "react";
+import { React, useReducer, useState, useRef, useEffect } from "react";
 import Slide from '@mui/material/Slide';
 import ButtonBackNavigation from "@/components/button/ButtonNavigationBack";
 import { getItemFromLocalStorage, addItemToLocalStorage } from "@/utils/getItemLocalStorage";
 import { eventsReducer } from "@/utils/reducer";
 
+const inititalEvents = getItemFromLocalStorage();
 export default function Form() {
-    const inititalEvents = getItemFromLocalStorage();
     const [events, dispatch] = useReducer(eventsReducer, inititalEvents);
     const [content, setContent] = useState({
         title: "", date: "", description: ""
     })
+    useEffect(() => {
+        addItemToLocalStorage(events);
+    }, [events])
     const textAreaRows = useRef();
     const handleAddEvent = () => {
         dispatch({
@@ -18,7 +21,6 @@ export default function Form() {
             date: content.date == "" ? new Date() : content.date,
             description: content.description
         })
-        localStorage.setItem("events", JSON.stringify(events))
     }
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
@@ -48,7 +50,7 @@ export default function Form() {
                             }} />
                         </div>
                         <div className="container_submit_form">
-                            <button className="submit_form" onClick={() => handleAddEvent()}>Add event</button>
+                            <button className="submit_form" onClick={handleAddEvent}>Add event</button>
                         </div>
                     </div>
                 </div>

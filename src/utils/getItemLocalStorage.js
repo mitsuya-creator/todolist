@@ -12,7 +12,6 @@ function getItemFromLocalStorage() {
 function addItemToLocalStorage(updateData) {
     console.log("addItem")
     localStorage.setItem("events", JSON.stringify(updateData))
-    return 0;
 }
 
 export { getItemFromLocalStorage, addItemToLocalStorage };
