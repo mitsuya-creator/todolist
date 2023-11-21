@@ -1,7 +1,7 @@
 import { React, useReducer, useState, useRef, useEffect } from "react";
 import Slide from '@mui/material/Slide';
 import ButtonBackNavigation from "@/components/button/ButtonNavigationBack";
-import { getItemFromLocalStorage, addItemToLocalStorage } from "@/utils/getItemLocalStorage";
+import { getItemFromLocalStorage, addItemToLocalStorage } from "@/utils/itemLocalStorage";
 import { eventsReducer } from "@/utils/reducer";
 
 const inititalEvents = getItemFromLocalStorage();

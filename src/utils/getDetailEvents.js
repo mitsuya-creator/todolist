@@ -1,4 +1,4 @@
-import { getItemFromLocalStorage } from "@/utils/getItemLocalStorage";
+import { getItemFromLocalStorage } from "@/utils/itemLocalStorage";
 
 let initialData = getItemFromLocalStorage();
 export function getDetailEvent(id) {

@@ -15,7 +15,7 @@ function TodayTask({ todos }) {
                 </section>
                 <section className="body_today_task_view_lessen">
                     <ul>
-                        {todos.map(data => <Card title={data.title} descriptions={data.description} key={data.id} id={data.id} />)}
+                        {todos.map(data => <Card key={data.id} {...data} />)}
                     </ul>
                 </section>
             </div>

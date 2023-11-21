@@ -5,7 +5,7 @@ import Slide from '@mui/material/Slide';
 import Card from "@/components/Card";
 import TodayTask from "@/components/todayTask";
 import ButtonAddTodo from "@/components/button/ButtonAddTodo";
-import { getItemFromLocalStorage } from "@/utils/getItemLocalStorage";
+import { getItemFromLocalStorage } from "@/utils/itemLocalStorage";
 
 export default function Home() {
     const data = getItemFromLocalStorage();
@@ -19,7 +19,7 @@ export default function Home() {
                     <User />
                 </div>
                 <ul className={completedTask.length == 1 ? "container_list_by_actions flex justify-center" : "container_list_by_actions"}>
-                    {completedTask.map(data => <Card title={data.title} descriptions={data.description} key={data.id} id={data.id} isCompleted={data.isCompleted} />)}
+                    {completedTask.map(data => <Card key={data.id} {...data} />)}
                 </ul>
                 {/* <NoEventHere /> */}
                 <TodayTask todos={data} />
