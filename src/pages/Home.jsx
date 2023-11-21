@@ -10,7 +10,6 @@ import { getItemFromLocalStorage } from "@/utils/itemLocalStorage";
 export default function Home() {
     const data = getItemFromLocalStorage();
     const completedTask = data.filter(data => data.isCompleted === true)
-    console.log(data)
     let isThereEvent = data.length > 0;
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>

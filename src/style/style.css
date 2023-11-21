@@ -1,6 +1,7 @@
 :root {
     --bg-primary: #26252C;
     --bg-secondary: #594AB2;
+    --bg-success: #64dd17;
     --bg-body: #2d2d30;
     --color-primary: #ffffff;
 
@@ -348,10 +349,17 @@ body {
     text-overflow: ellipsis;
     white-space: normal;
     padding: 16px;
-    background-color: var(--bg-primary);
     scroll-snap-align: center;
     border-radius: 10px;
     display: inline-block;
+}
+
+.bg_primary {
+    background-color: var(--bg-primary);
+}
+
+.bg_success {
+    background-color: var(--bg-success);
 }
 
 .body_list_by_actions p {

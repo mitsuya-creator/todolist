@@ -1,9 +1,16 @@
-import React from "react";
+import { React, useReducer } from "react";
 import Card from "@/components/Card";
 import { Link } from "react-router-dom";
+import { eventsReducer } from "@/utils/reducer"
 
 function TodayTask({ todos }) {
-
+    const [events, dispatch] = useReducer(eventsReducer, todos);
+    const handleOnChange = (event) => {
+        dispatch({
+            type: "changed",
+            event: event
+        })
+    }
     return (
         <div className="container_today_task">
             <div className="container_today_task_view_lessen">
@@ -15,7 +22,7 @@ function TodayTask({ todos }) {
                 </section>
                 <section className="body_today_task_view_lessen">
                     <ul>
-                        {todos.map(data => <Card key={data.id} {...data} />)}
+                        {events.map(data => <Card key={data.id} onChange={handleOnChange} data={data} />)}
                     </ul>
                 </section>
             </div>

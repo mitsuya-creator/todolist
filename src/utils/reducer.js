@@ -16,8 +16,8 @@ export function eventsReducer(events, action) {
         }
         case "changed": {
             return events.map(event => {
-                if (event.id === action.events.id) {
-                    return event.events
+                if (event.id === action.event.id) {
+                    return action.event
                 } else {
                     return event
                 }
