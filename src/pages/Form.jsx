@@ -1,12 +1,12 @@
-import { React, useReducer, useState, useRef, useEffect } from "react";
+import { React, useState, useRef, useEffect, useContext } from "react";
 import Slide from '@mui/material/Slide';
 import ButtonBackNavigation from "@/components/button/ButtonNavigationBack";
-import { getItemFromLocalStorage, addItemToLocalStorage } from "@/utils/itemLocalStorage";
-import { eventsReducer } from "@/utils/reducer";
+import { addItemToLocalStorage } from "@/utils/itemLocalStorage";
+import { DispatchContext, EventsContext } from "@/utils/contex";
 
-const inititalEvents = getItemFromLocalStorage();
 export default function Form() {
-    const [events, dispatch] = useReducer(eventsReducer, inititalEvents);
+    const events = useContext(EventsContext);
+    const dispatch = useContext(DispatchContext);
     const [content, setContent] = useState({
         title: "", date: "", description: ""
     })

@@ -14,43 +14,38 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
         color: "#fff",
     }
 }));
-export default function CardDetail(props) {
-    console.log(props.event.length == 1)
-    let content;
-    if (props.event.length == 1) {
-        const { title, description, date, isCompleted } = props.event[0];
-        content = <Table sx={{ minWidth: 300 }} aria-label="customized table" border={1}>
-            <TableHead>
-                <TableRow>
-                    <StyledTableCell className="sm_800">Title</StyledTableCell>
-                    <StyledTableCell>{title}</StyledTableCell>
-                </TableRow>
-            </TableHead>
-            <TableHead>
-                <TableRow>
-                    <StyledTableCell className="sm_800">Description</StyledTableCell>
-                    <StyledTableCell>{description}</StyledTableCell>
-                </TableRow>
-            </TableHead>
-            <TableHead>
-                <TableRow>
-                    <StyledTableCell className="sm_800">Has to be Completed</StyledTableCell>
-                    <StyledTableCell>{date}</StyledTableCell>
-                </TableRow>
-            </TableHead>
-            <TableHead>
-                <TableRow>
-                    <StyledTableCell className="sm_800">Status</StyledTableCell>
-                    <StyledTableCell>{isCompleted ?
-                        <span>Completed <CheckCircleIcon fontSize={"small"} className="success_svg" /></span> : "Uncompleted"}</StyledTableCell>
-                </TableRow>
-            </TableHead>
-        </Table>
-    }
+export default function CardDetail({ event }) {
+    const { title, description, date, isCompleted } = event[0];
     return (
         <div className="container_card_detail">
             <TableContainer component={Paper}>
-                {content}
+                <Table sx={{ minWidth: 300 }} aria-label="customized table" border={1}>
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell className="sm_800">Title</StyledTableCell>
+                            <StyledTableCell>{title}</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell className="sm_800">Description</StyledTableCell>
+                            <StyledTableCell>{description}</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell className="sm_800">Has to be Completed</StyledTableCell>
+                            <StyledTableCell>{date}</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell className="sm_800">Status</StyledTableCell>
+                            <StyledTableCell>{isCompleted ?
+                                <span>Completed <CheckCircleIcon fontSize={"small"} className="success_svg" /></span> : "Uncompleted"}</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                </Table>
             </TableContainer>
         </div>
     );
