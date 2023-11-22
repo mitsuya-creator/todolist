@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import { React, useContext, useEffect } from "react";
 import User from "@/components/userProfile";
 import NoEventHere from "@/components/NoEvents";
 import Slide from '@mui/material/Slide';
@@ -6,6 +6,7 @@ import Card from "@/components/Card";
 import TodayTask from "@/components/todayTask";
 import ButtonAddTodo from "@/components/button/ButtonAddTodo";
 import { DispatchContext, EventsContext } from "@/utils/contex";
+import { addItemToLocalStorage } from "@/utils/itemLocalStorage";
 
 export default function Home() {
     const events = useContext(EventsContext);
@@ -16,6 +17,7 @@ export default function Home() {
             event: event
         })
     }
+    useEffect(() => addItemToLocalStorage(events), [events]);
     const completedTask = events.filter(data => data.isCompleted === true)
     let isThereEvent = events.length > 0;
     return (

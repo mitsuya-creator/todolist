@@ -11,10 +11,12 @@ function Card({ data, onChange }) {
                         <p>{data.description}</p>
                     </div>
                 </Link>
-                <input type="checkbox" checked={data.isCompleted} className={data.isCompleted ? "checkbox_card checked" : "checkbox_card"} onChange={e => onChange({
-                    ...data,
-                    isCompleted: e.target.checked
-                })} />
+                <input type="checkbox" checked={data.isCompleted} className={data.isCompleted ? "checkbox_card checked" : "checkbox_card"} onChange={e => {
+                    onChange({
+                        ...data,
+                        isCompleted: e.target.checked
+                    })
+                }} />
             </section>
         </ li>
     )
