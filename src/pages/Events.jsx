@@ -1,17 +1,24 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import Slide from '@mui/material/Slide';
 import User from "@/components/userProfile";
 import Card from "@/components/Card";
-import { data } from "@/utils/initialData";
-import ButtonAddTodo from "@/components/button/ButtonAddTodo";
+import { DispatchContext, EventsContext } from "@/utils/contex";
 
 function EventsHere() {
+    const events = useContext(EventsContext)
+    const dispatch = useContext(DispatchContext);
+    const handleOnChange = event => {
+        dispatch({
+            type: "changed",
+            event: event
+        })
+    }
     const [completed, setCompleted] = useState(true);
-    let viewTodos;
+    let selectedEvents;
     if (completed) {
-        viewTodos = data.filter(data => data.isCompleted === true)
+        selectedEvents = events.filter(data => data.isCompleted === true)
     } else {
-        viewTodos = data.filter(data => data.isCompleted === false)
+        selectedEvents = events.filter(data => data.isCompleted === false)
     }
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
@@ -29,7 +36,7 @@ function EventsHere() {
                         </div>
                         <div className="card_events">
                             <ul className="flex flex-direction-column">
-                                {viewTodos.map(todo => <Card key={todo.id} title={todo.title} descriptions={todo.description} id={todo.id} isCompleted={todo.isCompleted} />)}
+                                {selectedEvents.map(todo => <Card key={todo.id} data={todo} onChange={handleOnChange} />)}
                             </ul>
                         </div>
                     </section>
