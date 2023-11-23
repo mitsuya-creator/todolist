@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { React, useContext, useState } from 'react';
 import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -6,10 +6,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { createTheme } from '@mui/material/styles'
 import { ThemeProvider } from '@emotion/react';
-import { showFormattedDate } from '@/utils/showFormattedDate';
 import Slide from '@mui/material/Slide';
 import User from "@/components/userProfile";
 import { PickersDay } from '@mui/x-date-pickers';
+import { EventsContext } from '@/utils/contex';
 
 
 const newTheme = (theme) => createTheme({
@@ -50,14 +50,19 @@ const newTheme = (theme) => createTheme({
     }
 })
 
-const isSpecialDay = (date) => {
-    const initialDate = [11, 12, 13, 14, 15]
-    return initialDate.includes(date.date());
+const isSpecialDay = (datePickers, dateHasEvent) => {
+    return dateHasEvent.includes(JSON.stringify(datePickers.$d));
 };
 
-function EventsDate({ day, ...props }) {
-    const eventDay = isSpecialDay(day);
+function HasEvent({ day, ...props }) {
+    const events = useContext(EventsContext)
+    let eventDay, dateHasEvent = [];
+    events.map((event) => {
+        dateHasEvent.push(JSON.stringify(new Date(event.date)))
+    })
+    eventDay = isSpecialDay(day, dateHasEvent);
     return (
+
         <PickersDay
             {...props}
             day={day}
@@ -79,9 +84,7 @@ function EventsDate({ day, ...props }) {
 }
 
 export default function Calendar() {
-    const [value, setValue] = React.useState(dayjs(new Date()));
-    const date = showFormattedDate(value);
-
+    const [value, setValue] = useState(dayjs(new Date()));
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
             <section className="section_single_slide_mark">
@@ -96,7 +99,7 @@ export default function Calendar() {
                                     <DateCalendar
                                         value={value}
                                         onChange={(newValue) => setValue(newValue)}
-                                        slots={{ day: EventsDate }}
+                                        slots={{ day: HasEvent }}
                                     />
                                 </DemoItem>
                             </DemoContainer>
