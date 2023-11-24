@@ -9,7 +9,10 @@ import { ThemeProvider } from '@emotion/react';
 import Slide from '@mui/material/Slide';
 import User from "@/components/userProfile";
 import { PickersDay } from '@mui/x-date-pickers';
-import { EventsContext } from '@/utils/contex';
+import { DispatchContext, EventsContext } from '@/utils/contex';
+import { showFormattedDate } from '@/utils/showFormattedDate';
+import Card from '@/components/Card';
+import NoEventHere from '@/components/NoEvents';
 
 
 const newTheme = (theme) => createTheme({
@@ -50,6 +53,9 @@ const newTheme = (theme) => createTheme({
     }
 })
 
+
+
+let date = showFormattedDate(new Date());
 const isSpecialDay = (datePickers, dateHasEvent) => {
     return dateHasEvent.includes(JSON.stringify(datePickers.$d));
 };
@@ -76,15 +82,29 @@ function HasEvent({ day, ...props }) {
                 alignItems: 'center',
                 justifyContent: 'center',
             }}
-            onClick={e => console.log(e)}
+            onClick={e => {
+                let dateSelected = e.target.dataset.timestamp / 1000;
+                date = showFormattedDate(dateSelected * 1000)
+
+            }}
         >
             {dayjs(day).format('D')}
-        </PickersDay>
+        </PickersDay >
     );
 }
 
 export default function Calendar() {
     const [value, setValue] = useState(dayjs(new Date()));
+    const events = useContext(EventsContext);
+    const dispatch = useContext(DispatchContext);
+    const eventsBaseOnDate = events.filter(event => event.date == date);
+    console.log(eventsBaseOnDate);
+    const handleOnChange = event => {
+        dispatch({
+            type: "changed",
+            event: event
+        })
+    }
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
             <section className="section_single_slide_mark">
@@ -105,6 +125,11 @@ export default function Calendar() {
                             </DemoContainer>
                         </LocalizationProvider>
                     </ThemeProvider>
+                </div>
+                <div className="container_events_calendar">
+                    <ul className="body_events_calendar">
+                        {eventsBaseOnDate.length != 0 ? eventsBaseOnDate.map(data => <Card key={data.id} onChange={handleOnChange} data={data} />) : <NoEventHere />}
+                    </ul>
                 </div>
             </section>
         </Slide>
