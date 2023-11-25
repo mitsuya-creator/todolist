@@ -108,7 +108,7 @@ export default function Calendar() {
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
             <section className="section_single_slide_mark">
-                <div className="fixed_top">
+                <div className="sticky_top">
                     <User />
                 </div>
                 <div className="container_calendar">
@@ -126,12 +126,13 @@ export default function Calendar() {
                         </LocalizationProvider>
                     </ThemeProvider>
                 </div>
-                <div className="container_events_calendar">
+                <h1 className="title_date sticky_top">{date}</h1>
+                <div>
                     <ul className="body_events_calendar">
                         {eventsBaseOnDate.length != 0 ? eventsBaseOnDate.map(data => <Card key={data.id} onChange={handleOnChange} data={data} />) : <NoEventHere />}
                     </ul>
                 </div>
             </section>
-        </Slide>
+        </Slide >
     );
 }
