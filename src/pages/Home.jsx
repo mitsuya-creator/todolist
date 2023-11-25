@@ -7,6 +7,7 @@ import TodayTask from "@/components/todayTask";
 import ButtonAddTodo from "@/components/button/ButtonAddTodo";
 import { DispatchContext, EventsContext } from "@/utils/contex";
 import { addItemToLocalStorage } from "@/utils/itemLocalStorage";
+import { showFormattedDate } from "@/utils/showFormattedDate";
 
 export default function Home() {
     const events = useContext(EventsContext);
@@ -18,20 +19,28 @@ export default function Home() {
         })
     }
     useEffect(() => addItemToLocalStorage(events), [events]);
-    const completedTask = events.filter(data => data.isCompleted === true)
-    let isThereEvent = events.length > 0;
+    const completedEventsToday = events.filter(data => data.isCompleted === true && data.date == showFormattedDate(new Date()))
+    const unCompletedEventsToday = events.filter(data => data.isCompleted === false && data.date == showFormattedDate(new Date()))
+    let isThereEventsToday = events.map(data => data.date == showFormattedDate(new Date())).length > 0;
+    let content;
+    if (isThereEventsToday) {
+        content = <>
+            <ul className={completedEventsToday.length == 1 ? "container_list_by_actions flex justify-center" : "container_list_by_actions"}>
+                {completedEventsToday.length != 0 ? completedEventsToday.map(data => <Card key={data.id} data={data} onChange={handleOnChange} />) : <p>You have {unCompletedEventsToday.length} uncompleted events today, make it completed LFG  </p>}
+            </ul>
+            <TodayTask unCompletedEventsToday={unCompletedEventsToday} onChange={handleOnChange} />
+            <ButtonAddTodo style="container_button_add_todo_home" />
+        </>
+    } else {
+        content = <NoEventHere />
+    }
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
             <section className="section_single_slide_mark">
-                <div className="fixed_top">
+                <div className="sticky_top">
                     <User />
                 </div>
-                <ul className={completedTask.length == 1 ? "container_list_by_actions flex justify-center" : "container_list_by_actions"}>
-                    {completedTask.map(data => <Card key={data.id} data={data} onChange={handleOnChange} />)}
-                </ul>
-                {/* <NoEventHere /> */}
-                <TodayTask events={events} onChange={handleOnChange} />
-                <ButtonAddTodo style="container_button_add_todo_home" />
+                {content}
             </section>
         </Slide>
     )
