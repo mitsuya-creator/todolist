@@ -28,6 +28,10 @@ body {
     position: relative;
 }
 
+.h_full {
+    height: 100vh;
+}
+
 .section_single_slide_mark {
     height: 100vh;
     overflow-y: scroll;
@@ -43,6 +47,10 @@ body {
 
 .justify-center {
     justify-content: center;
+}
+
+.align_center {
+    align-items: center;
 }
 
 .d-none {
@@ -142,8 +150,7 @@ body {
     width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: inherit;
 }
 
 .body_noevent {
@@ -219,9 +226,9 @@ body {
 .container_form {
     display: flex;
     justify-content: center;
-    height: 100vh;
     width: 100vw;
     margin-top: 100px;
+    height: fit-content;
 }
 
 .body_form {
@@ -229,6 +236,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: fit-content;
+    margin-bottom: 72px;
 }
 
 .body_form div {

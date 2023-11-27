@@ -34,7 +34,8 @@ export default function Home() {
             <ButtonAddTodo style="container_button_add_todo_home" />
         </>
     } else {
-        content = <NoEventHere />
+        content = <div className="h_full flex justify-center align_center"><NoEventHere /></div>
+
     }
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
