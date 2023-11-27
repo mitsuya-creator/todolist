@@ -21,12 +21,14 @@ export default function Home() {
     useEffect(() => addItemToLocalStorage(events), [events]);
     const completedEventsToday = events.filter(data => data.isCompleted === true && data.date == showFormattedDate(new Date()))
     const unCompletedEventsToday = events.filter(data => data.isCompleted === false && data.date == showFormattedDate(new Date()))
-    let isThereEventsToday = events.map(data => data.date == showFormattedDate(new Date())).length > 0;
+    let isThereEventsToday = events.filter(data => data.date == showFormattedDate(new Date())).length > 0;
+    console.log(showFormattedDate(new Date()))
+    console.log(isThereEventsToday)
     let content;
     if (isThereEventsToday) {
         content = <>
             <ul className={completedEventsToday.length == 1 ? "container_list_by_actions flex justify-center" : "container_list_by_actions"}>
-                {completedEventsToday.length != 0 ? completedEventsToday.map(data => <Card key={data.id} data={data} onChange={handleOnChange} />) : <p>You have {unCompletedEventsToday.length} uncompleted events today, make it completed LFG  </p>}
+                {completedEventsToday.length != 0 ? completedEventsToday.map(data => <Card key={data.id} data={data} onChange={handleOnChange} />) : <p className="uncompleted_events">You have {unCompletedEventsToday.length} uncompleted events today, make it completed LFG  </p>}
             </ul>
             <TodayTask unCompletedEventsToday={unCompletedEventsToday} onChange={handleOnChange} />
             <ButtonAddTodo style="container_button_add_todo_home" />

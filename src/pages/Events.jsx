@@ -23,17 +23,17 @@ function EventsHere() {
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
             <section className="section_single_slide_mark">
-                <div className="fixed_top">
+                <div className="sticky_top">
                     <User />
+                </div>
+                <div className="button_actions sticky_top">
+                    <div>
+                        <button className={completed ? "button_actions_active" : null} onClick={() => setCompleted(true)}>Completed</button>
+                        <button className={completed ? null : "button_actions_active"} onClick={() => setCompleted(false)}>Uncompleted</button>
+                    </div>
                 </div>
                 <div className="container_todos_by_actions">
                     <section>
-                        <div className="button_actions">
-                            <div>
-                                <button className={completed ? "button_actions_active" : null} onClick={() => setCompleted(true)}>Completed</button>
-                                <button className={completed ? null : "button_actions_active"} onClick={() => setCompleted(false)}>Uncompleted</button>
-                            </div>
-                        </div>
                         <div className="card_events">
                             <ul className="flex flex-direction-column">
                                 {selectedEvents.map(todo => <Card key={todo.id} data={todo} onChange={handleOnChange} />)}

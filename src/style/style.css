@@ -142,7 +142,8 @@ body {
     width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    height: 100vh;
 }
 
 .body_noevent {
@@ -283,18 +284,19 @@ input[type="checkbox"]:hover {
 
 .container_todos_by_actions {
     width: 100vw;
-    margin: 63px auto 0;
+    height: max-content;
+    margin: auto;
     display: flex;
     justify-content: center;
     z-index: 1;
-    position: absolute;
+    overflow-y: scroll;
 }
 
 .button_actions {
-    margin-top: 20px;
+    margin-top: 68px;
     display: flex;
     width: 100vw;
-    height: 51px;
+    height: 63px;
     justify-content: center;
     background-color: var(--bg-body);
 }
@@ -327,12 +329,12 @@ input[type="checkbox"]:hover {
 
 .card_events {
     width: 100vw;
-    height: 72vh;
+    height: fit-content;
     display: flex;
     justify-content: center;
     background-color: var(--bg-body);
     margin-top: 10px;
-    overflow-y: scroll;
+
 }
 
 .container_list_by_actions {
@@ -409,10 +411,9 @@ button:hover {
 
 .container_today_task_view_lessen {
     width: 327px;
-    height: fit-content;
     background: rgb(37, 0, 255);
     background: linear-gradient(90deg, rgba(37, 0, 255, 1) 0%, rgba(89, 74, 178, 1) 100%);
-    margin: 275px auto 0;
+    margin: 0 auto 0;
     border-radius: 10px;
     position: relative;
 }
@@ -431,11 +432,11 @@ button:hover {
 
 
 .body_today_task_view_lessen {
-    overflow-y: scroll;
-    height: 43vh;
     background-color: transparent;
     display: flex;
     flex-direction: column;
+    height: 50vh;
+    overflow-y: scroll
 }
 
 .success_svg {
@@ -445,6 +446,7 @@ button:hover {
 .container_today_task {
     display: flex;
     justify-content: center;
+    margin-top: 36vh;
 }
 
 .container_calendar {
@@ -527,8 +529,8 @@ button:hover {
 .container_button_add_todo_home {
     position: absolute;
     width: 116px;
-    right: 5px;
-    bottom: 1px;
+    right: 16px;
+    bottom: 100px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -537,6 +539,7 @@ button:hover {
     padding: 16px;
     border-radius: 10px;
     z-index: 11;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 
 
 }
@@ -628,4 +631,10 @@ button:hover {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.uncompleted_events {
+    width: 284px;
+    height: 100%;
+    background-color: red;
 }
