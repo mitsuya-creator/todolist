@@ -28,7 +28,7 @@ export default function Home() {
     if (isThereEventsToday) {
         content = <>
             <ul className={completedEventsToday.length == 1 ? "container_list_by_actions flex justify-center" : "container_list_by_actions"}>
-                {completedEventsToday.length != 0 ? completedEventsToday.map(data => <Card key={data.id} data={data} onChange={handleOnChange} />) : <p className="uncompleted_events">You have {unCompletedEventsToday.length} uncompleted events today, make it completed LFG  </p>}
+                {completedEventsToday.length != 0 ? completedEventsToday.map(data => <Card key={data.id} data={data} onChange={handleOnChange} />) : <div className="container_list_by_actions flex justify-center"><pre className="uncompleted_events">Today, you have {unCompletedEventsToday.length} uncompleted events.<br />Make sure you have completed today!</pre></div>}
             </ul>
             <TodayTask unCompletedEventsToday={unCompletedEventsToday} onChange={handleOnChange} />
             <ButtonAddTodo style="container_button_add_todo_home" />

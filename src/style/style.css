@@ -151,6 +151,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: inherit;
+    margin-bottom: 80px;
 }
 
 .body_noevent {
@@ -338,6 +339,7 @@ input[type="checkbox"]:hover {
 
 .card_events {
     width: 100vw;
+    overflow-x: hidden;
     height: fit-content;
     display: flex;
     justify-content: center;
@@ -644,6 +646,10 @@ button:hover {
 
 .uncompleted_events {
     width: 284px;
-    height: 100%;
-    background-color: red;
+    height: 248px;
+}
+
+.good_job {
+    text-align: center;
+    margin: 50px;
 }

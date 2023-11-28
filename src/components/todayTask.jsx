@@ -3,6 +3,14 @@ import Card from "@/components/Card";
 import { Link } from "react-router-dom";
 
 function TodayTask({ unCompletedEventsToday, onChange }) {
+    let content;
+    if (unCompletedEventsToday.length != 0) {
+        content = <ul>
+            {unCompletedEventsToday.map(data => <Card key={data.id} onChange={onChange} data={data} />)}
+        </ul>
+    } else {
+        content = <h3 className="good_job">Good job, you've completed events today's</h3>
+    }
     return (
         <div className="container_today_task">
             <div className="container_today_task_view_lessen">
@@ -13,9 +21,7 @@ function TodayTask({ unCompletedEventsToday, onChange }) {
                     </Link>
                 </section>
                 <section className="body_today_task_view_lessen">
-                    <ul>
-                        {unCompletedEventsToday.map(data => <Card key={data.id} onChange={onChange} data={data} />)}
-                    </ul>
+                    {content}
                 </section>
             </div>
         </div>

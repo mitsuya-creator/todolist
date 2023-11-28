@@ -3,6 +3,7 @@ import Slide from '@mui/material/Slide';
 import User from "@/components/userProfile";
 import Card from "@/components/Card";
 import { DispatchContext, EventsContext } from "@/utils/contex";
+import NoEventHere from "@/components/NoEvents";
 
 function EventsHere() {
     const events = useContext(EventsContext)
@@ -20,6 +21,13 @@ function EventsHere() {
     } else {
         selectedEvents = events.filter(data => data.isCompleted === false)
     }
+    const isThereEvents = selectedEvents.length > 0;
+    let content;
+    if (isThereEvents) {
+        content = <ul className="flex flex-direction-column">{selectedEvents.map(todo => <Card key={todo.id} data={todo} onChange={handleOnChange} />)}</ul>
+    } else {
+        content = <NoEventHere />
+    }
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
             <section className="section_single_slide_mark">
@@ -33,13 +41,9 @@ function EventsHere() {
                     </div>
                 </div>
                 <div className="container_todos_by_actions">
-                    <section>
-                        <div className="card_events">
-                            <ul className="flex flex-direction-column">
-                                {selectedEvents.map(todo => <Card key={todo.id} data={todo} onChange={handleOnChange} />)}
-                            </ul>
-                        </div>
-                    </section>
+                    <div className="card_events">
+                        {content}
+                    </div>
                 </div>
             </section>
         </Slide>
