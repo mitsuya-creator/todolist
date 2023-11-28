@@ -50,7 +50,7 @@ export default function Form() {
                             }} />
                         </div>
                         <div className="container_submit_form">
-                            <button className="submit_form" onClick={handleAddEvent}>Add event</button>
+                            <button className="submit_form" style={{ opacity: content.title == "" ? 0.5 : 1 }} onClick={handleAddEvent} disabled={content.title == ""}>Add event</button>
                         </div>
                     </div>
                 </div>
