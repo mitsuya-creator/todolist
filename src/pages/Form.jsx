@@ -3,15 +3,25 @@ import Slide from '@mui/material/Slide';
 import ButtonBackNavigation from "@/components/button/ButtonNavigationBack";
 import { addItemToLocalStorage } from "@/utils/itemLocalStorage";
 import { DispatchContext, EventsContext } from "@/utils/contex";
+import SuccessCheckAnimation from "@/components/SuccessCheckAnimation";
+import { useNavigate } from "react-router-dom";
 
 export default function Form() {
     const events = useContext(EventsContext);
     const dispatch = useContext(DispatchContext);
     const [content, setContent] = useState({
-        title: "", date: "", description: ""
+        title: "", date: "", description: "", checkmark: false
     })
+    const navigate = useNavigate()
     useEffect(() => {
         addItemToLocalStorage(events);
+        let nav;
+        if (content.checkmark) {
+            nav = setTimeout(() => {
+                navigate("/dashboard", { replace: true })
+            }, 2000)
+        }
+        return () => clearTimeout(nav);
     }, [events])
     const textAreaRows = useRef();
     const handleAddEvent = () => {
@@ -50,10 +60,14 @@ export default function Form() {
                             }} />
                         </div>
                         <div className="container_submit_form">
-                            <button className="submit_form" style={{ opacity: content.title == "" ? 0.5 : 1 }} onClick={handleAddEvent} disabled={content.title == ""}>Add event</button>
+                            <button className="submit_form" style={{ opacity: content.title == "" ? 0.5 : 1 }} onClick={() => {
+                                setContent({ ...content, checkmark: true })
+                                handleAddEvent()
+                            }} disabled={content.title == ""}>Add event</button>
                         </div>
                     </div>
                 </div>
+                {content.checkmark ? <SuccessCheckAnimation /> : null}
             </div>
         </Slide>
     )
