@@ -20,14 +20,14 @@ export default function DetailEvent() {
                         <h1>Detail event</h1>
                     </section>
                     <section className="container_icon_title">
-                        <div>
+                        <button onClick={() => console.log(id)}>
                             <EditIcon />
                             <span>Edit</span>
-                        </div>
-                        <div>
+                        </button>
+                        <button>
                             <DeleteIcon />
                             <span>Delete</span>
-                        </div>
+                        </button>
                     </section>
                 </div>
                 <CardDetail event={event} />

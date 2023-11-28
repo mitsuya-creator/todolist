@@ -6,17 +6,17 @@ import { DispatchContext, EventsContext } from "@/utils/contex";
 import SuccessCheckAnimation from "@/components/SuccessCheckAnimation";
 import { useNavigate } from "react-router-dom";
 
-export default function Form() {
+export default function FormAdd() {
     const events = useContext(EventsContext);
     const dispatch = useContext(DispatchContext);
     const [content, setContent] = useState({
-        title: "", date: "", description: "", checkmark: false
+        title: "", date: "", description: "", checkMarkAnimation: false
     })
     const navigate = useNavigate()
     useEffect(() => {
         addItemToLocalStorage(events);
         let nav;
-        if (content.checkmark) {
+        if (content.checkMarkAnimation) {
             nav = setTimeout(() => {
                 navigate("/dashboard", { replace: true })
             }, 2000)
@@ -46,28 +46,28 @@ export default function Form() {
                         </div>
                         <div>
                             <label htmlFor="enter_event">Enter event</label>
-                            <input type="text" id="enter_event" onChange={e => setContent({ ...content, title: e.target.value })} />
+                            <input type="text" id="enter_event" value={content.title} onChange={e => setContent({ ...content, title: e.target.value })} />
                         </div>
                         <div>
                             <label htmlFor="date_event">Date</label>
-                            <input type="date" id="date_event" onChange={e => setContent({ ...content, date: e.target.value })} />
+                            <input type="date" id="date_event" value={content.date} onChange={e => setContent({ ...content, date: e.target.value })} />
                         </div>
                         <div>
                             <label htmlFor="description_event">Description</label>
-                            <textarea ref={textAreaRows} type="text" rows={1} cols={20} style={{ resize: "none" }} className="input_as_input" onChange={e => setContent({ ...content, description: e.target.value })} onInput={() => {
+                            <textarea ref={textAreaRows} type="text" value={content.description} rows={1} cols={20} style={{ resize: "none" }} className="input_as_input" onChange={e => setContent({ ...content, description: e.target.value })} onInput={() => {
                                 textAreaRows.current.style.height = "";
                                 textAreaRows.current.style.height = textAreaRows.current.scrollHeight + "px";
                             }} />
                         </div>
                         <div className="container_submit_form">
                             <button className="submit_form" style={{ opacity: content.title == "" ? 0.5 : 1 }} onClick={() => {
-                                setContent({ ...content, checkmark: true })
+                                setContent({ ...content, checkMarkAnimation: true })
                                 handleAddEvent()
                             }} disabled={content.title == ""}>Add event</button>
                         </div>
                     </div>
                 </div>
-                {content.checkmark ? <SuccessCheckAnimation /> : null}
+                {content.checkMarkAnimation ? <SuccessCheckAnimation /> : null}
             </div>
         </Slide>
     )

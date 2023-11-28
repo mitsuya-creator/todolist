@@ -494,13 +494,15 @@ button:hover {
     justify-content: center;
 }
 
-.container_icon_title div {
+.container_icon_title button {
     height: 63px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 16px;
     margin-right: 16px;
+    background-color: transparent;
+    border: none;
 }
 
 .button_back {

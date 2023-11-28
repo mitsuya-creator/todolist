@@ -6,7 +6,8 @@ import BottomNavigation from "./components/button/ButtonNavigation";
 import LandingPage from "@/pages/Index";
 import EventsHere from "@/pages/Events";
 import Calendar from "@/pages/Calendar";
-import Form from "@/pages/Form";
+import FormAdd from "@/pages/FormAdd";
+import FormEdit from "@/pages/FormEdit";
 import DetailEvent from "@/pages/DetailEvent";
 import { EventsContext, DispatchContext } from "@/utils/contex";
 import { eventsReducer } from "@/utils/reducer";
@@ -29,8 +30,10 @@ function App() {
                             </Route>
                             <Route path="/dashboard/calendar" element={<Calendar />} />
                         </Route>
-                        <Route path="/events/detail/:id" element={<DetailEvent />} />
-                        <Route path="/newtask" element={<Form />} />
+                        <Route path="/events/detail/:id" element={<DetailEvent />}>
+                            {/* <Route path="/events/detail/:id/edit" element={<FormEdit />} /> */}
+                        </Route>
+                        <Route path="/newtask" element={<FormAdd />} />
                     </Routes>
                 </BrowserRouter>
             </DispatchContext.Provider>
