@@ -34,7 +34,7 @@ export default function Home() {
             <ButtonAddTodo style="container_button_add_todo_home" />
         </>
     } else {
-        content = <div className="h_full flex justify-center align_center"><NoEventHere /></div>
+        content = <div className="h_full flex justify-center align_center"><NoEventHere text={"Create an event for today"} /></div>
 
     }
     return (

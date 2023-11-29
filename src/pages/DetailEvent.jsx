@@ -20,7 +20,7 @@ export default function DetailEvent() {
                         <h1>Detail event</h1>
                     </section>
                     <section className="container_icon_title">
-                        <Link to={`/events/detail/edit/${event[0].id}`}>
+                        <Link to={`/events/detail/edit/${event[0].id}`} className="link">
                             <button onClick={() => console.log(id)}>
                                 <EditIcon />
                                 <span>Edit</span>

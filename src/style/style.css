@@ -641,6 +641,10 @@ button:hover {
     margin: 50px;
 }
 
+.link {
+    text-decoration: none;
+}
+
 /* successChecAnimations */
 .container_success_checkmark {
     height: 100vh;

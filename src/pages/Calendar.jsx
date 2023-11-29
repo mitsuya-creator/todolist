@@ -129,7 +129,7 @@ export default function Calendar() {
                 <h1 className="title_date sticky_top">{date}</h1>
                 <div>
                     <ul className="body_events_calendar">
-                        {eventsBaseOnDate.length != 0 ? eventsBaseOnDate.map(data => <Card key={data.id} onChange={handleOnChange} data={data} />) : <NoEventHere />}
+                        {eventsBaseOnDate.length != 0 ? eventsBaseOnDate.map(data => <Card key={data.id} onChange={handleOnChange} data={data} />) : <NoEventHere text={"Create an event for the day"} />}
                     </ul>
                 </div>
             </section>
