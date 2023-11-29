@@ -14,22 +14,22 @@ export default function FormEdit() {
     const event = useDetailEvent(id)[0];
     const dispatch = useContext(DispatchContext);
     let convertDateToYearMonthDate = new Date(event.date);
-    convertDateToYearMonthDate = `${convertDateToYearMonthDate.getFullYear()}-${convertDateToYearMonthDate.getMonth() + 1}-${convertDateToYearMonthDate.getDate()}`;
+    convertDateToYearMonthDate = `${convertDateToYearMonthDate.getFullYear()}-${convertDateToYearMonthDate.getMonth() < 9 ? `0${convertDateToYearMonthDate.getMonth() + 1}` : convertDateToYearMonthDate.getMonth() + 1}-${convertDateToYearMonthDate.getDate() < 10 ? `0${convertDateToYearMonthDate.getDate()}` : convertDateToYearMonthDate.getDate()}`;
     const [content, setContent] = useState({
-        title: event.title, date: convertDateToYearMonthDate, description: event.description, checkmark: event.checkmark
+        title: event.title, date: convertDateToYearMonthDate, description: event.description, checkmark: false
     })
-    console.log(event)
-    // const navigate = useNavigate()
-    // useEffect(() => {
-    //     addItemToLocalStorage(events);
-    //     let nav;
-    // if (content.checkmark) {
-    //     nav = setTimeout(() => {
-    //         navigate("/dashboard", { replace: true })
-    //     }, 2000)
-    // }
-    //     return () => clearTimeout(nav);
-    // }, [events])
+    console.log(event, events)
+    const navigate = useNavigate()
+    useEffect(() => {
+        addItemToLocalStorage(events);
+        let nav;
+        if (content.checkmark) {
+            nav = setTimeout(() => {
+                navigate(`/events/detail/${id}`, { replace: true })
+            }, 2000)
+        }
+        return () => clearTimeout(nav);
+    }, [events])
     const textAreaRows = useRef();
     const handleOnChange = event => {
         dispatch({
@@ -37,9 +37,6 @@ export default function FormEdit() {
             event: event
         })
     }
-    // console.log(convertDate.getFullYear(), convertDate.getMonth(), convertDate.getDate())
-    // event.date = `${convertDate.getFullYear()}-${convertDate.getMonth()}-${convertDate.getDate()}`;
-    // console.log(showFormattedDate(event.date))
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
             <div className="container_new_task">
@@ -69,16 +66,20 @@ export default function FormEdit() {
                             }} />
                         </div>
                         <div className="container_submit_form">
-                            <button className="submit_form" style={{ opacity: content.title == "" ? 0.5 : 1 }} onClick={() => handleOnChange({
-                                ...event,
-                                title: content.title,
-                                date: showFormattedDate(content.date),
-                                description: content.description
-                            })} disabled={content.title == ""}>Save change</button>
+                            <button className="submit_form" style={{ opacity: content.title == "" ? 0.5 : 1 }} onClick={() => {
+                                handleOnChange({
+                                    ...event,
+                                    title: content.title,
+                                    date: showFormattedDate(content.date),
+                                    description: content.description
+                                })
+                                setContent({ ...content, checkmark: true })
+                            }
+                            } disabled={content.title == ""}>Save change</button>
                         </div>
                     </div>
                 </div>
-                {/* {content.checkmark ? <SuccessCheckAnimation /> : null} */}
+                {content.checkmark ? <SuccessCheckAnimation /> : null}
             </div>
         </Slide>
     )

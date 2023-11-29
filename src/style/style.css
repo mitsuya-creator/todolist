@@ -170,10 +170,6 @@ body {
     align-items: center;
 }
 
-/* 
-.more_vertical_icon:hover {
-    cursor: pointer;
-} */
 .checkbox_card {
     position: absolute;
     top: 12px;
