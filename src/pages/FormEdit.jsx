@@ -14,18 +14,24 @@ export default function FormEdit() {
     const event = useDetailEvent(id)[0];
     const dispatch = useContext(DispatchContext);
     let convertDateToYearMonthDate = new Date(event.date);
-    convertDateToYearMonthDate = `${convertDateToYearMonthDate.getFullYear()}-${convertDateToYearMonthDate.getMonth() < 9 ? `0${convertDateToYearMonthDate.getMonth() + 1}` : convertDateToYearMonthDate.getMonth() + 1}-${convertDateToYearMonthDate.getDate() < 10 ? `0${convertDateToYearMonthDate.getDate()}` : convertDateToYearMonthDate.getDate()}`;
+    let year, month, date;
+    year = convertDateToYearMonthDate.getFullYear();
+    month = convertDateToYearMonthDate.getMonth() + 1;
+    date = convertDateToYearMonthDate.getDate();
+    if (`${month}`.length < 2) month = `0${month}`;
+    if (`${date}`.length < 2) date = `0${date}`;
+
     const [content, setContent] = useState({
-        title: event.title, date: convertDateToYearMonthDate, description: event.description, checkmark: false
+        title: event.title, date: `${year}-${month}-${date}`, description: event.description, checkmarkAnimation: false
     })
     console.log(event, events)
     const navigate = useNavigate()
     useEffect(() => {
         addItemToLocalStorage(events);
         let nav;
-        if (content.checkmark) {
+        if (content.checkmarkAnimation) {
             nav = setTimeout(() => {
-                navigate(`/events/detail/${id}`, { replace: true })
+                navigate(`/events/detail/${id}`, { state: { key: window.history.go(-1) } })
             }, 2000)
         }
         return () => clearTimeout(nav);
@@ -73,13 +79,13 @@ export default function FormEdit() {
                                     date: showFormattedDate(content.date),
                                     description: content.description
                                 })
-                                setContent({ ...content, checkmark: true })
+                                setContent({ ...content, checkmarkAnimation: true })
                             }
                             } disabled={content.title == ""}>Save change</button>
                         </div>
                     </div>
                 </div>
-                {content.checkmark ? <SuccessCheckAnimation /> : null}
+                {content.checkmarkAnimation ? <SuccessCheckAnimation /> : null}
             </div>
         </Slide>
     )
