@@ -30,9 +30,8 @@ function App() {
                             </Route>
                             <Route path="/dashboard/calendar" element={<Calendar />} />
                         </Route>
-                        <Route path="/events/detail/:id" element={<DetailEvent />}>
-                            {/* <Route path="/events/detail/:id/edit" element={<FormEdit />} /> */}
-                        </Route>
+                        <Route path="/events/detail/:id" element={<DetailEvent />} />
+                        <Route path="/events/detail/edit/:id" element={<FormEdit />} />
                         <Route path="/newtask" element={<FormAdd />} />
                     </Routes>
                 </BrowserRouter>

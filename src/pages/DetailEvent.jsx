@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import ButtonBackNavigation from "@/components/button/ButtonNavigationBack";
 import Slide from '@mui/material/Slide';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -20,10 +20,12 @@ export default function DetailEvent() {
                         <h1>Detail event</h1>
                     </section>
                     <section className="container_icon_title">
-                        <button onClick={() => console.log(id)}>
-                            <EditIcon />
-                            <span>Edit</span>
-                        </button>
+                        <Link to={`/events/detail/edit/${event[0].id}`}>
+                            <button onClick={() => console.log(id)}>
+                                <EditIcon />
+                                <span>Edit</span>
+                            </button>
+                        </Link>
                         <button>
                             <DeleteIcon />
                             <span>Delete</span>
