@@ -1,5 +1,5 @@
-import { React, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { React, useState, useContext, useEffect } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import ButtonBackNavigation from "@/components/button/ButtonNavigationBack";
 import Slide from '@mui/material/Slide';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -8,12 +8,27 @@ import { useDetailEvent } from "@/utils/useDetailEvents";
 import CardDetail from "@/components/CardDetail";
 import ButtonAddTodo from '@/components/button/ButtonAddTodo';
 import ModalConfirmDelete from "@/components/ModalConfirmDelete";
+import { DispatchContext, EventsContext } from "@/utils/contex";
+import { addItemToLocalStorage } from "@/utils/itemLocalStorage";
 
 export default function DetailEvent() {
     const [isOpen, setIsOpen] = useState(false);
     console.log(isOpen)
     const { id } = useParams();
-    const event = useDetailEvent(id);
+    const event = useDetailEvent(id)[0];
+    const dispatch = useContext(DispatchContext);
+    const events = useContext(EventsContext);
+    const navigate = useNavigate();
+    const handleDeleted = eventId => {
+        dispatch({
+            type: "deleted",
+            id: eventId
+        });
+        navigate("/dashboard/events")
+    }
+    useEffect(() => {
+        addItemToLocalStorage(events)
+    }, [events])
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
             <div className="container_detail_event">
@@ -23,7 +38,7 @@ export default function DetailEvent() {
                         <h1>Detail event</h1>
                     </section>
                     <section className="container_icon_title">
-                        <Link to={`/events/detail/edit/${event[0].id}`} className="link">
+                        <Link to={`/events/detail/edit/${event.id}`} className="link">
                             <button>
                                 <EditIcon />
                                 <span>Edit</span>
@@ -37,7 +52,7 @@ export default function DetailEvent() {
                 </div>
                 <CardDetail event={event} />
                 <ButtonAddTodo style={"container_button_add_todo_detail_event"} />
-                <ModalConfirmDelete isOpen={isOpen} setIsOpen={setIsOpen} />
+                <ModalConfirmDelete isOpen={isOpen} setIsOpen={setIsOpen} handleDeleted={() => handleDeleted(event.id)} />
             </div>
         </Slide>
     )

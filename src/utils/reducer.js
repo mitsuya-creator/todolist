@@ -23,6 +23,9 @@ export function eventsReducer(events, action) {
                 }
             })
         }
+        case "deleted": {
+            return events.filter(event => event.id != action.id)
+        }
         default: {
             throw Error("Unknown action");
         }

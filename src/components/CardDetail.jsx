@@ -15,7 +15,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     }
 }));
 export default function CardDetail({ event }) {
-    const { title, description, date, isCompleted } = event[0];
+    const { title, description, date, isCompleted } = event;
     return (
         <div className="container_card_detail">
             <TableContainer component={Paper}>
