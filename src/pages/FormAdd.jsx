@@ -18,7 +18,7 @@ export default function FormAdd() {
         let nav;
         if (content.checkMarkAnimation) {
             nav = setTimeout(() => {
-                navigate("/dashboard", { replace: true })
+                navigate("/dashboard/events")
             }, 2000)
         }
         return () => clearTimeout(nav);
