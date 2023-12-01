@@ -1,7 +1,6 @@
 import { React, useState, useRef, useEffect, useContext } from "react";
 import Slide from '@mui/material/Slide';
 import ButtonBackNavigation from "@/components/button/ButtonNavigationBack";
-import { addItemToLocalStorage } from "@/utils/itemLocalStorage";
 import { DispatchContext, EventsContext } from "@/utils/contex";
 import SuccessCheckAnimation from "@/components/SuccessCheckAnimation";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +13,6 @@ export default function FormAdd() {
     })
     const navigate = useNavigate()
     useEffect(() => {
-        addItemToLocalStorage(events);
         let nav;
         if (content.checkMarkAnimation) {
             nav = setTimeout(() => {

@@ -1,7 +1,6 @@
 import { React, useState, useRef, useEffect, useContext } from "react";
 import Slide from '@mui/material/Slide';
 import ButtonBackNavigation from "@/components/button/ButtonNavigationBack";
-import { addItemToLocalStorage } from "@/utils/itemLocalStorage";
 import { DispatchContext, EventsContext } from "@/utils/contex";
 import SuccessCheckAnimation from "@/components/SuccessCheckAnimation";
 import { useNavigate, useParams } from "react-router-dom";
@@ -24,10 +23,8 @@ export default function FormEdit() {
     const [content, setContent] = useState({
         title: event.title, date: `${year}-${month}-${date}`, description: event.description, checkmarkAnimation: false
     })
-    console.log(event, events)
     const navigate = useNavigate()
     useEffect(() => {
-        addItemToLocalStorage(events);
         let nav;
         if (content.checkmarkAnimation) {
             nav = setTimeout(() => {

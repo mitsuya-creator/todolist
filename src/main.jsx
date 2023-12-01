@@ -1,4 +1,4 @@
-import { React, useReducer } from "react";
+import { React, useReducer, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "@/pages/Home";
@@ -11,13 +11,13 @@ import FormEdit from "@/pages/FormEdit";
 import DetailEvent from "@/pages/DetailEvent";
 import { EventsContext, DispatchContext } from "@/utils/contex";
 import { eventsReducer } from "@/utils/reducer";
-import { getItemFromLocalStorage } from "@/utils/itemLocalStorage";
+import { addItemToLocalStorage, getItemFromLocalStorage } from "@/utils/itemLocalStorage";
 import "./style/style.css";
 
 function App() {
     let initialEvents = getItemFromLocalStorage();
     const [events, dispatch] = useReducer(eventsReducer, initialEvents);
-    console.log(events);
+    useEffect(() => addItemToLocalStorage(events), [events]);
     return (
         <EventsContext.Provider value={events}>
             <DispatchContext.Provider value={dispatch}>

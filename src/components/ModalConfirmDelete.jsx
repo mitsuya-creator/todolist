@@ -1,12 +1,10 @@
-import { React, forwardRef, useEffect, useContext } from 'react';
+import { React, forwardRef } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import Slide from '@mui/material/Slide';
-// import { EventsContext } from '@/utils/contex';
-import { addItemToLocalStorage } from '@/utils/itemLocalStorage';
 
 
 const Transition = forwardRef(function Transition(props, ref) {
@@ -14,10 +12,6 @@ const Transition = forwardRef(function Transition(props, ref) {
 });
 
 export default function ModalConfirmDelete({ isOpen, setIsOpen, handleDeleted }) {
-    // const events = useContext(EventsContext);
-    // useEffect(() => {
-    //     addItemToLocalStorage(events)
-    // }, [events])
     return (
         <Dialog
             open={isOpen}

@@ -1,4 +1,4 @@
-import { React, useState, useContext, useEffect } from "react";
+import { React, useState, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import ButtonBackNavigation from "@/components/button/ButtonNavigationBack";
 import Slide from '@mui/material/Slide';
@@ -8,16 +8,13 @@ import { useDetailEvent } from "@/utils/useDetailEvents";
 import CardDetail from "@/components/CardDetail";
 import ButtonAddTodo from '@/components/button/ButtonAddTodo';
 import ModalConfirmDelete from "@/components/ModalConfirmDelete";
-import { DispatchContext, EventsContext } from "@/utils/contex";
-import { addItemToLocalStorage } from "@/utils/itemLocalStorage";
+import { DispatchContext } from "@/utils/contex";
 
 export default function DetailEvent() {
     const [isOpen, setIsOpen] = useState(false);
-    console.log(isOpen)
     const { id } = useParams();
     const event = useDetailEvent(id)[0];
     const dispatch = useContext(DispatchContext);
-    const events = useContext(EventsContext);
     const navigate = useNavigate();
     const handleDeleted = eventId => {
         dispatch({
@@ -26,9 +23,6 @@ export default function DetailEvent() {
         });
         navigate("/dashboard/events")
     }
-    useEffect(() => {
-        addItemToLocalStorage(events)
-    }, [events])
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
             <div className="container_detail_event">
