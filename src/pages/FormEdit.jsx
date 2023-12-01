@@ -29,7 +29,7 @@ export default function FormEdit() {
         if (content.checkmarkAnimation) {
             nav = setTimeout(() => {
                 navigate(`/events/detail/${id}`, { state: { key: window.history.go(-1) } })
-            }, 2000)
+            }, 1000)
         }
         return () => clearTimeout(nav);
     }, [events])

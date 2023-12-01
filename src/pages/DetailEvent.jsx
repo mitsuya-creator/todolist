@@ -9,6 +9,8 @@ import CardDetail from "@/components/CardDetail";
 import ButtonAddTodo from '@/components/button/ButtonAddTodo';
 import ModalConfirmDelete from "@/components/ModalConfirmDelete";
 import { DispatchContext } from "@/utils/contex";
+import SuccessCheckAnimation from '@/components/SuccessCheckAnimation';
+
 
 export default function DetailEvent() {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,16 +18,20 @@ export default function DetailEvent() {
     const event = useDetailEvent(id)[0];
     const dispatch = useContext(DispatchContext);
     const navigate = useNavigate();
+    const [isDeleted, setIsDeted] = useState(false)
     const handleDeleted = eventId => {
         dispatch({
             type: "deleted",
             id: eventId
-        });
-        navigate("/dashboard/events")
+        })
+        setIsDeted(true)
+        isDeleted ? setTimeout(() => navigate("/dashboard/events"), 1000) : 
     }
+
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
             <div className="container_detail_event">
+                {isDeleted ? <SuccessCheckAnimation /> : null}
                 <div className="container_button_back_detail">
                     <section className="button_back_title">
                         <ButtonBackNavigation />
