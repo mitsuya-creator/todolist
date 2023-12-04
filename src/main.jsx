@@ -13,6 +13,7 @@ import { EventsContext, DispatchContext } from "@/utils/contex";
 import { eventsReducer } from "@/utils/reducer";
 import { addItemToLocalStorage, getItemFromLocalStorage } from "@/utils/itemLocalStorage";
 import { Analytics } from "@vercel/analytics/react";
+import NoPages from "@/pages/NoPages";
 import "./style/style.css";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                             <Route path="/events/detail/:id" element={<DetailEvent />} />
                             <Route path="/events/detail/edit/:id" element={<FormEdit />} />
                             <Route path="/newtask" element={<FormAdd />} />
+                            <Route path="/*" element={<NoPages />} />
                         </Routes>
                     </BrowserRouter>
                 </DispatchContext.Provider>
