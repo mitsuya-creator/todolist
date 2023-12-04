@@ -12,6 +12,7 @@ import DetailEvent from "@/pages/DetailEvent";
 import { EventsContext, DispatchContext } from "@/utils/contex";
 import { eventsReducer } from "@/utils/reducer";
 import { addItemToLocalStorage, getItemFromLocalStorage } from "@/utils/itemLocalStorage";
+import { Analytics } from "@vercel/analytics/react";
 import "./style/style.css";
 
 function App() {
@@ -19,24 +20,27 @@ function App() {
     const [events, dispatch] = useReducer(eventsReducer, initialEvents);
     useEffect(() => addItemToLocalStorage(events), [events]);
     return (
-        <EventsContext.Provider value={events}>
-            <DispatchContext.Provider value={dispatch}>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<LandingPage />} />
-                        <Route path="/dashboard" element={<BottomNavigation />} >
-                            <Route index element={<Home />} />
-                            <Route path="/dashboard/events" element={<EventsHere />}>
+        <>
+            <EventsContext.Provider value={events}>
+                <DispatchContext.Provider value={dispatch}>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<LandingPage />} />
+                            <Route path="/dashboard" element={<BottomNavigation />} >
+                                <Route index element={<Home />} />
+                                <Route path="/dashboard/events" element={<EventsHere />}>
+                                </Route>
+                                <Route path="/dashboard/calendar" element={<Calendar />} />
                             </Route>
-                            <Route path="/dashboard/calendar" element={<Calendar />} />
-                        </Route>
-                        <Route path="/events/detail/:id" element={<DetailEvent />} />
-                        <Route path="/events/detail/edit/:id" element={<FormEdit />} />
-                        <Route path="/newtask" element={<FormAdd />} />
-                    </Routes>
-                </BrowserRouter>
-            </DispatchContext.Provider>
-        </EventsContext.Provider>
+                            <Route path="/events/detail/:id" element={<DetailEvent />} />
+                            <Route path="/events/detail/edit/:id" element={<FormEdit />} />
+                            <Route path="/newtask" element={<FormAdd />} />
+                        </Routes>
+                    </BrowserRouter>
+                </DispatchContext.Provider>
+            </EventsContext.Provider>
+            <Analytics />
+        </>
     )
 }
 
