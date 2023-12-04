@@ -1,4 +1,4 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import ButtonBackNavigation from "@/components/button/ButtonNavigationBack";
 import Slide from '@mui/material/Slide';
@@ -18,41 +18,53 @@ export default function DetailEvent() {
     const event = useDetailEvent(id)[0];
     const dispatch = useContext(DispatchContext);
     const navigate = useNavigate();
-    const [isDeleted, setIsDeted] = useState(false)
+    const [isDeleted, setIsDeleted] = useState(false)
     const handleDeleted = eventId => {
         dispatch({
             type: "deleted",
             id: eventId
         })
-        setIsDeted(true)
-        isDeleted ? setTimeout(() => navigate("/dashboard/events"), 1000) : 
+    }
+    useEffect(() => {
+        let nav;
+        if (isDeleted) {
+            nav = setTimeout(() => navigate("/dashboard/events"), 1000)
+        }
+        return () => clearTimeout(nav);
+    }, [isDeleted])
+    let content;
+    if (isDeleted) {
+        content = <SuccessCheckAnimation />
+    } else {
+        content = <div className="container_detail_event">
+            <div className="container_button_back_detail">
+                <section className="button_back_title">
+                    <ButtonBackNavigation />
+                    <h1>Detail event</h1>
+                </section>
+                <section className="container_icon_title">
+                    <Link to={`/events/detail/edit/${event.id}`} className="link">
+                        <button>
+                            <EditIcon />
+                            <span>Edit</span>
+                        </button>
+                    </Link>
+                    <button onClick={() => setIsOpen(true)}>
+                        <DeleteIcon />
+                        <span>Delete</span>
+                    </button>
+                </section>
+            </div>
+            <CardDetail event={event} />
+            <ButtonAddTodo style={"container_button_add_todo_detail_event"} />
+            <ModalConfirmDelete isOpen={isOpen} setIsOpen={setIsOpen} handleDeleted={() => handleDeleted(event.id)} setIsDeleted={setIsDeleted} />
+        </div>
     }
 
     return (
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
-            <div className="container_detail_event">
-                {isDeleted ? <SuccessCheckAnimation /> : null}
-                <div className="container_button_back_detail">
-                    <section className="button_back_title">
-                        <ButtonBackNavigation />
-                        <h1>Detail event</h1>
-                    </section>
-                    <section className="container_icon_title">
-                        <Link to={`/events/detail/edit/${event.id}`} className="link">
-                            <button>
-                                <EditIcon />
-                                <span>Edit</span>
-                            </button>
-                        </Link>
-                        <button onClick={() => setIsOpen(true)}>
-                            <DeleteIcon />
-                            <span>Delete</span>
-                        </button>
-                    </section>
-                </div>
-                <CardDetail event={event} />
-                <ButtonAddTodo style={"container_button_add_todo_detail_event"} />
-                <ModalConfirmDelete isOpen={isOpen} setIsOpen={setIsOpen} handleDeleted={() => handleDeleted(event.id)} />
+            <div>
+                {content}
             </div>
         </Slide>
     )

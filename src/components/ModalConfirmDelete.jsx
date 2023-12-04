@@ -11,7 +11,7 @@ const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function ModalConfirmDelete({ isOpen, setIsOpen, handleDeleted }) {
+export default function ModalConfirmDelete({ isOpen, setIsOpen, handleDeleted, setIsDeleted }) {
     return (
         <Dialog
             open={isOpen}
@@ -27,7 +27,10 @@ export default function ModalConfirmDelete({ isOpen, setIsOpen, handleDeleted })
             </DialogContent>
             <DialogActions>
                 <Button onClick={() => setIsOpen(false)}>Cancel</Button>
-                <Button onClick={handleDeleted}>Delete</Button>
+                <Button onClick={() => {
+                    handleDeleted();
+                    setIsDeleted(true);
+                }}>Delete</Button>
             </DialogActions>
         </Dialog>
     );

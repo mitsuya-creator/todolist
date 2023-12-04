@@ -98,7 +98,6 @@ export default function Calendar() {
     const events = useContext(EventsContext);
     const dispatch = useContext(DispatchContext);
     const eventsBaseOnDate = events.filter(event => event.date == date);
-    console.log(eventsBaseOnDate);
     const handleOnChange = event => {
         dispatch({
             type: "changed",

@@ -20,8 +20,6 @@ export default function Home() {
     const completedEventsToday = events.filter(data => data.isCompleted === true && data.date == showFormattedDate(new Date()))
     const unCompletedEventsToday = events.filter(data => data.isCompleted === false && data.date == showFormattedDate(new Date()))
     let isThereEventsToday = events.filter(data => data.date == showFormattedDate(new Date())).length > 0;
-    console.log(showFormattedDate(new Date()))
-    console.log(isThereEventsToday)
     let content;
     if (isThereEventsToday) {
         content = <>
