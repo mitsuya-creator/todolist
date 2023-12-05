@@ -1,0 +1,36 @@
+{
+    "routes": [
+        {
+            "src": "/",
+            "dest": "/"
+        },
+        {
+            "src": "/dashboard",
+            "dest": "/"
+        },
+        {
+            "src": "/dashboard/events",
+            "dest": "/"
+        },
+        {
+            "src": "/dashboard/calendar",
+            "dest": "/"
+        },
+        {
+            "src": "/events/detail/:id",
+            "dest": "/"
+        },
+        {
+            "src": "/events/detail/edit/:id",
+            "dest": "/"
+        },
+        {
+            "src": "/newtask",
+            "dest": "/"
+        },
+        {
+            "src": "/*",
+            "dest": "/"
+        }
+    ]
+}
