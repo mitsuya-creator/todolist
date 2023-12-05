@@ -29,8 +29,12 @@
             "dest": "/"
         },
         {
-            "src": "/*",
-            "des": "/"
+            "handle": "filesystem"
+        },
+        {
+            "src": "/(.*)",
+            "status": 404,
+            "dest": "/"
         }
     ]
 }
