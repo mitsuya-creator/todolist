@@ -1,8 +1,13 @@
-# React + Vite
+# todolist
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+As usually, made a simple app ~todolist.
+This app, using :
 
-Currently, two official plugins are available:
+- [Material-UI](https://mui.com/material-ui/getting-started/)
+- [Vite](https://vitejs.dev/)
+- [Google-Fonts](https://fonts.google.com/)
+- Vanilla CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+currently live: [v1.0.0](https://github.com/takachan0012/todolist/tree/v1.0.0)
+
+access live on: https://todosappx.vercel.app/ 
